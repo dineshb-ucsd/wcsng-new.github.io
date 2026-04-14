@@ -1,81 +1,43 @@
 # Masters Students
-- name: Abhishek Khare
+- name: Kishore Rajendran
   role: MS
-  col: 1
-- name: Harsh Deshpande
-  role: MS
-  col: 2
-- name: Siddharth Mohan
-  role: MS
-  col: 1
-- name: Pratik Ratadiya
-  role: MS
-  col: 2
-- name: Sreevatsank Kadaveru
-  role: MS
-  col: 1
-- name: Shubham Jain
-  role: MS
-  col: 2
-- name: Gaurav Singh
-  role: MS
-  col: 1
-- name: Hari Prasad
-  role: MS
-  col: 2
-- name: Joshua Orozco
-  role: MS
-  col: 1
-- name: Puja Shukla
-  role: MS
-  col: 2
-- name: Radhika Mathuria
-  role: MS
-  col: 1
-- name: Sureel Shah
-  role: MS
-  col: 2
-- name: Kamalakannan
-  role: MS
-  col: 1
-- name: Ajay Kanchiraju
-  role: MS
-  col: 2
-- name: Yizheng Yu
-  role: MS
-  col: 1
-- name: Rushabha Balaji
-  role: MS
-  col: 2
-- name: Suriyaa
-  role: MS
-  col: 1
-- name: Madhumitha Venkatesh
-  role: MS
-  col: 2
-- name: Zih-Hao Fu
-  role: MS
+  year: "2026"
+  now: 
   col: 1
 
-# Undergrad
+
 - name: William Hunter
-  role: BS
+  role: MS
+  year: "2024"
+  now: 
   col: 1
-- name: Kanishka Roy
+
+
+# - name: Test # Use as a test subject
+#   role: MS
+#   year: "2024"
+#   now: 
+#   col: 2
+
+
+# Undergrad
+
+- name: Maiyun Zhang
   role: BS
-  col: 2
-- name: Shayaun Bashar
-  role: BS
+  year: "2027"
+  now: 
   col: 1
-- name: Wenshuo Zang
+- name: Luke Wilson
   role: BS
-  col: 2
-- name: Yucheng Huang
-  role: BS
+  year: "2026"
+  now: 
   col: 1
-- name: Ameya Mandale
+
+- name: Yichen Yu
   role: BS
-  col: 2
-- name: Anuj Jain
-  role: BS
+  year: "2026"
+  now: 
   col: 1
+
+
+

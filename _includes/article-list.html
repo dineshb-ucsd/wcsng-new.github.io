@@ -30,6 +30,7 @@
     {%- include snippets/prepend-baseurl.html path=_article.url -%}
     {%- assign _article_url = __return -%}
 
+
     {%- if _article.cover -%}
       {%- include snippets/get-nav-url.html path=_article.cover -%}
       {%- assign _article_cover = __return -%}
@@ -55,7 +56,7 @@
           </div>
         {%- endif -%}
         <div class="item__content">
-          <header><a href="{{ _article_url }}"><h2 itemprop="headline" class="item__header">{{ _article.title }}</h2></a></header>
+          <header><a href="{{ _article_url | remove: '.html' }}"><h2 itemprop="headline" class="item__header">{{ _article.title }}</h2></a></header>
           <div class="item__description">
             {%- if _article.excerpt and include.show_excerpt -%}
               <div class="article__content" itemprop="description articleBody">
@@ -67,7 +68,7 @@
               </div>
             {%- endif -%}
             {%- if include.show_readmore -%}
-              <p><a href="{{ _article_url }}">{{ _locale_readmore }}</a></p>
+              <p><a href="{{ _article_url | remove: '.html'}}">{{ _locale_readmore }}</a></p>
             {%- endif -%}
           </div>
           {%- if include.show_info -%}
@@ -118,7 +119,7 @@
             <span class="item__meta">{{ _article.date | date: __return }}</span>
           {%- endif -%}
           <div class="row">
-            <a itemprop="headline" class="item__header" href="{{ _article_url }}">{{ _article.short_title }}</a>
+            <a itemprop="headline" class="item__header" href="{{ _article_url | remove: '.html'}}">{{ _article.title }}</a>
           </div>
           {%- if _article.authors and include.show_authors -%}
             <div class="row">
@@ -153,15 +154,27 @@
                 <img class="image" src="{{ _article_cover }}" />
                 <div class="overlay overlay--bottom">
                   <header>
-                    <a href="{{ _article_url }}"><h2 class="card__header">{{ _article.title }}</h2></a>
+                    <a href="{{ _article_url | remove: '.html'}}"><h2 class="card__header">{{ _article.title }}</h2></a>
                   </header>
                 </div>
               </div>
             {%- endif -%}
             </div>
         </div>
+      {%- elsif include.size == 'lg' -%}
+        <div class="cell cell--12 cell--lg-6">
+          <div class="card card--flat">
+            {%- if _article.cover -%}
+              <div class="card__image"><img src="{{ _article_cover }}" /></div>
+            {%- endif -%}
+              <div class="card__content">
+                <header>
+                  <a href="{{ _article_url | remove: '.html'}}"><h2 class="card__header">{{ _article.title }}</h2></a>
+                </header>
+              </div>
+          </div>
+        </div>
       {%- else -%}
-
         <div class="cell cell--12 cell--md-6 cell--lg-4">
           <div class="card card--flat">
             {%- if _article.cover -%}
@@ -169,7 +182,7 @@
             {%- endif -%}
               <div class="card__content">
                 <header>
-                  <a href="{{ _article_url }}"><h2 class="card__header">{{ _article.title }}</h2></a>
+                  <a href="{{ _article_url | remove: '.html' }}"><h2 class="card__header">{{ _article.title }}</h2></a>
                 </header>
               </div>
           </div>

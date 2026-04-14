@@ -1,0 +1,42 @@
+name: Build and Deploy Jekyll Site
+
+on:
+  # Runs on pushes targeting the main branch
+  push:
+    branches: ["master"]
+
+
+jobs:
+  # Build job 
+  build:
+    runs-on: self-hosted
+    steps:
+
+      # - name: Finding secret
+      #   run: echo "${{ secrets.RSYNC_WCSNG }}" > /home/wcsng-18/secret.txt
+
+      - name: Print Environment Variables (Before Proxy Test)
+        run: env | sort
+
+      # **PROXY TESTING** 
+      - name: Set https_proxy (Test)
+        run: echo "https_proxy=http://webproxy.ucsd.edu:3128" >> $GITHUB_ENV
+
+      - name: Print Environment Variables (After Proxy Test)
+        run: env | sort
+        
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t my-jekyll-app .
+
+      - name: Run Jekyll build
+        run: docker run --rm -v "${GITHUB_WORKSPACE}:/ucsdwcsng.github.io" my-jekyll-app sh -c "JEKYLL_ENV=production bundle exec jekyll build"
+
+      - name: Deploy to self hosted website
+        run: |
+          docker run --rm -v "${GITHUB_WORKSPACE}:/ucsdwcsng.github.io" my-jekyll-app sh -c "${{ secrets.RSYNC_WCSNG }}"
+
+
+

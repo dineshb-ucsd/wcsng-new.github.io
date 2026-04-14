@@ -181,7 +181,8 @@ analytics:
 ##############################
 markdown    : kramdown
 highlighter : rouge
-permalink   : date
+permalink   : /:title/
+# permalink   : none
 
 exclude:
   - CHANGELOG.md
@@ -223,3 +224,8 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jemoji
+
+## => Extra stuff for publications
+miscs:
+  - content_type: # type
+  - content_url: # link

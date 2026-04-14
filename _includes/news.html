@@ -1,0 +1,15 @@
+<div class="news">
+  <a class="news-close-link"
+    onclick="document.getElementsByClassName('col-aside')[0].classList.toggle('visible');document.getElementsByClassName('news-sidebar-link')[0].hidden=false">
+    Close
+  </a>
+
+  <h2>News</h2>
+
+  {% for article in site.data.news.news limit:9 %}
+  <i><font color="gray">{{ article.date }}</font></i>
+  <p>{{ article.headline }}</p>
+  {% endfor %}
+
+  <a href="/allnews.html">More news...</a>
+</div>

@@ -35,9 +35,9 @@ layout: page
 <h3>Publications</h3>
 <div class="layout--archive js-all">
   <div class="js-result layout--archive__result d-none">
-    {%- include article-list.html articles=publications type='brief' show_cover=true cover_size = 'lg' show_authors=true reverse=true -%}
+    {%- include article-list.html articles=publications type='brief' show_cover=true cover_size = 'lg' show_authors=true reverse=false -%}
   </div>
-  <a href="/publist.html">Show More</a>
+  <a href="/publications/">Show More</a>
 </div>
 <script>
   {%- include scripts/archieve.js -%}
@@ -75,8 +75,19 @@ layout: page
 {% endif %}
 
 <h3>Team</h3>
+
+{% assign people_list = "" | split: "" %}
+
+{% if site.data.people %}
+  {% assign people_list = people_list | concat: site.data.people %}
+{% endif %}
+
+{% if site.data.alumni %}
+  {% assign people_list = people_list | concat: site.data.alumni %}
+{% endif %}
+
 <div class="article-list grid grid--sm grid--p-3">
-    {% for people in site.data.people %}
+    {% for people in people_list %}
       {% if page.people contains people.name %}
        <div class="cell cell--12 cell--md-4 cell--lg-3">
           <div class="card card--flat">
@@ -84,7 +95,11 @@ layout: page
               <img class="image" src="{{ people.picture }}" />
                 <div class="overlay overlay--bottom">
                   <header>
-                    <p>{{ people.name }}</p>
+                    {% if people.website %}
+                      <p><a href="{{ people.website }}">{{ people.name }}</a></p>
+                    {% else %}
+                      <p>{{ people.name }}</p>
+                    {% endif %}
                     <p><i style="color: #dddddd">{{ people.role }}</i></p>
                   </header>
                 </div>

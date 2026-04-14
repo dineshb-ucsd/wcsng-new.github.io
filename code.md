@@ -1,5 +1,6 @@
 ---
 layout: page
+permalink: code/
 ---
 <h2>Code</h2>
 <ul>

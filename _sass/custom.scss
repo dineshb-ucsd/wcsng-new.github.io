@@ -1,3 +1,92 @@
 /* start custom scss snippet */
 
+.news {
+  border: 1px solid black;
+  padding: 15px;
+  margin: 16px;
+  margin-top: 52px;
+  background-color: #fff;
+}
+
+.col-aside {
+  &.visible {
+    @include media-breakpoint-down(lg) {
+      position: absolute;
+      z-index: 100;
+    }
+  }
+}
+
+.news-sidebar-link {
+  padding-right: map-get($spacers, 2);
+  position: absolute;
+  right: 0;
+
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
+}
+
+.news-close-link {
+  float: right;
+
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
+}
+
+#research-bar {
+  &.collapsed {
+    &>.research-bar {
+      @include media-breakpoint-down(lg) {
+        display: none;
+      }
+    }
+  }
+}
+
+.research-bar-toggle {
+  display: block;
+  color: #fff;
+
+  @include flexbox();
+
+  &>span>svg {
+    color: #fff
+  }
+
+  &>span {
+    padding: 0.5rem 0.5rem
+  }
+
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
+}
+
+.research-bar {
+  @include menu();
+  @include align-items(center);
+
+  @include media-breakpoint-down(lg) {
+    @include menu(0, 2, nowrap);
+    @include menu-direction("vertical");
+  }
+
+  @include media-breakpoint-up(lg) {
+    @include menu(3, 2, nowrap);
+  }
+
+  padding-bottom: 0;
+  margin: 0;
+
+  @include media-breakpoint-down(md) {
+    padding-bottom: 4px;
+    margin: -4px 0 0 0;
+  }
+
+  @include align-items(center);
+  @include justify-content(center);
+}
+
 /* end custom scss snippet */

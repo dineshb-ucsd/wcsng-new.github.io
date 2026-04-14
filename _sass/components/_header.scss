@@ -10,8 +10,9 @@
   }
   .main {
     @include flexbox();
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(mdplus) {
       @include flex-direction(column);
+      padding: map-get($spacers, 2);
     }
   }
 }
@@ -88,19 +89,32 @@
 
 .navigation {
   @include overflow(auto, "x");
+
+  &.collapsed {
+    @include media-breakpoint-down(mdplus) {
+      display: none;
+    }
+  }
+
   & > ul {
     height: map-get($layout, header-height);
     padding-bottom: 0;
     margin: 0;
-    @include media-breakpoint-down(md) {
+
+    @include media-breakpoint-down(mdplus) {
       padding-bottom: 4px;
       margin: -4px 0 0 0;
     }
+
     @include menu(3, 2, nowrap);
     @include align-items(center);
-    @include media-breakpoint-down(md) {
+
+    @include media-breakpoint-down(mdplus) {
       height: auto;
+      @include menu(0, 2, nowrap);
+      @include menu-direction("vertical");
     }
+
     .search-button {
       @include media-breakpoint-down(md) {
         display: none;
@@ -144,21 +158,57 @@
 }
 
 .navigation ul ul {
-  position: absolute;
+  @include media-breakpoint-up(mdplus) {
+    position: absolute;
+  }
   display: none;
 }
 
 .navigation ul ul li {
   display: block;
 }
-  
+
+.navigation li.hovered ul {
+  @include media-breakpoint-down(mdplus) {
+    display: block;
+    overflow: visible;
+    background-color: #2b4d85;
+    z-index: 1;
+  }
+}
+
 .navigation li:hover ul {
-  display: block;
-  overflow: visible;
-  background-color: #182B49;
-  z-index: 1;
+  @include media-breakpoint-up(mdplus) {
+    display: block;
+    overflow: visible;
+    background-color: #182B49;
+    z-index: 1;
+  }
 }
 
 .navigation ul ul li a:hover {
   background-color: #555;
+}
+
+.navigation ul li a span {
+  margin-left: map-get($spacers, 2);
+  font-size: map-get($base, font-size-h6);
+}
+
+.nav-bar-toggle {
+  display: block;
+  color: #fff;
+
+  margin: auto auto auto 0;
+
+  @include flexbox();
+
+  &>span>svg {
+    color: #fff;
+    scale: 1.5;
+  }
+
+  @include media-breakpoint-up(mdplus) {
+    display: none;
+  }
 }

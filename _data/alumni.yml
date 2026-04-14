@@ -3,19 +3,291 @@
   role: Postdoc
   year: "2019"
   now: Google SD
-  col: 1
+  col: 2
+  picture: /assets/images/teampic/chi.jpg
+  website: http://dword1511.info/me/
+- name: Wei Sun
+  role: Postdoc
+  year: "2024"
+  now: Assistant Professor at Wichita State University
+  col: 2
+  picture: /assets/images/teampic/wei.jpg
+  website: https://sunwit.github.io/
+- name: Srivatsan Rajagopal
+  role: Postdoc
+  year: "2024"
+  now: Technical Staff, Zyphra
+  col: 2 
+  picture: /assets/images/teampic/srivatsan.jpg
+  website: https://www.linkedin.com/in/srivatsan-rajagopal-5458b621b/
+- name: Archana Bura
+  role: Postdoc
+  year: "2025"
+  picture: /assets/images/teampic/archana.jpg  
+  website: https://sites.google.com/tamu.edu/archanabura/home
 #phd
 - name: Roshan Ayyalasomayajula
   role: PhD
   year: "2023"
   now: Assistant Professor at University at Buffalo
   col: 2
-- name: Hans Yu
+  picture: /assets/images/teampic/roshan.jpg
+  website: https://www.acsu.buffalo.edu/~roshana/
+- name: Kshitiz Bansal
   role: PhD
-  year: "2019"
-  now: Broadcom SD
-  col: 1
+  year: "2024"
+  now: Blue River Technology
+  col: 2
+  picture: /assets/images/teampic/kshitiz.jpg
+  website: https://kshitizbansal.com
+- name: Manideep Dunna
+  role: PhD
+  year: "2024"
+  now: Qualcomm SD
+  col: 2
+  picture: /assets/images/teampic/manideep.jpg
+  website: https://manideepabc.github.io
+- name: Ish Kumar Jain
+  role: PhD
+  year: "2024"
+  now: Assistant Professor at RPI
+  col: 2
+  picture: /assets/images/teampic/ish.jpg
+  website: https://ishjain.github.io
+- name: Aditya Arun
+  role: PhD
+  year: "2024"
+  now: SkyDio
+  col: 2
+  picture: /assets/images/teampic/aditya.jpg
+  website: https://wcsng.ucsd.edu/aarun/
+- name: Raghav Subbaraman
+  role: PhD
+  year: "2024"
+  now: Apple
+  col: 2
+  picture: /assets/images/teampic/raghav.jpg
+  website: https://rsubbaraman.github.io
+- name: Hadi Givehchian
+  role: PhD
+  year: "2024"
+  now: Apple
+  col: 2
+  picture: /assets/images/teampic/hadi.jpg
+  website: https://www.linkedin.com/in/hadi-givehchian-515144105/
+- name: Richard Bell
+  role: PhD
+  year: "2024"
+  col: 2
+  picture: /assets/images/teampic/richard.png
+- name: Agrim Gupta
+  role: PhD
+  year: "2025"
+  now: Samsung Research America
+  col: 2 
+  picture: /assets/images/teampic/agrim.png
+  website: https://agrim9.github.io
+# - name: Hans Yu
+#   role: PhD
+#   year: "2019"
+#   now: Broadcom SD
+#   col: 1
+# Researchers  
+- name: Frederik Zumegen
+  role: Visiting Researcher
+  year: "2023"
+  now: PhD at ETH Zurich
+  col: 2
+  picture: /assets/images/teampic/frederik.jpg  
+  website: https://www.linkedin.com/in/frederik-zumegen-428ba11b5/?originalSubdomain=de
+
 #masters
+
+
+- name: Haochen Wang
+  role: MS
+  year: "2026"
+  now: PhD at Virginia Tech
+  col: 1
+- name: Qingyuan (Pearson) Zheng
+  role: MS
+  year: "2026"
+  now: PhD at Duke University
+  col: 2
+- name: William Hunter
+  role: MS
+  year: "2024"
+  now: PhD at UCSD
+  col: 1
+- name: Sesha Sai Rakesh
+  role: MS
+  year: "2025"
+  now:
+  col: 2
+
+- name: Ishan Bansal
+  role: MS
+  year: "2025"
+  now: PhD at UCSD
+  col: 2
+- name: Wenyi (Morty) Zhang
+  role: MS
+  year: "2025"
+  now: PhD at UCSD
+  col: 1
+- name: Wenhao Chen
+  role: MS
+  year: "2025"
+  now: PhD at U Buffalo
+  col: 2
+- name: Avyakta Kalipattapu
+  role: MS
+  year: "2024"
+  now: Apple CA
+  col: 1
+- name: Sandeep Nair
+  role: MS
+  year: "2024"
+  now: Apple CA
+  col: 2
+- name: Kewei Chen
+  role: MS
+  year: "2024"
+  now: 
+  col: 1
+- name: Harine Govindarajan
+  role: MS
+  year: "2025"
+  now: Apple CA
+  col: 2
+- name: Sameer Dohadwalla
+  role: MS
+  year: "2024"
+  now: Microsoft
+  col: 1
+- name: Rushabha Balaji
+  role: MS
+  year: "2024"
+  now: PhD at UCLA
+  col: 2
+- name: Suriyaa M
+  role: MS
+  year: "2024"
+  now: Apple CA
+  col: 1
+- name: Madhumitha Venkatesh
+  role: MS
+  year: "2024"
+  now: Qorvo CA
+  col: 2
+- name: Zih-Hao Fu
+  role: MS
+  year: "2024"
+  now: 
+  col: 1
+
+- name: Jiaming Jin
+  role: MS
+  year: "2024"
+  now: MaxLinear CA
+  col: 2
+- name: Yuan-I (Evan) Lo
+  role: MS
+  year: "2024"
+  now: Skyworks, LA
+  col: 1
+
+- name: Danny Vo
+  role: MS
+  year: "2024"
+  now: PhD at UCSD
+  col: 2
+- name: Vaibhav Anand
+  role: MS
+  year: "2024"
+  now: SpaceX CA
+  col: 1
+- name: Isamu Poy
+  role: MS
+  year: "2023"
+  now: Esri, CA
+  col: 2
+- name: Yizheng Yu
+  role: MS
+  year: "2023"
+  now: 
+  col: 1
+- name: Ajay Kanchiraju
+  role: MS
+  year: "2023"
+  now: Maxlinear CA
+  col: 2
+
+- name: Sureel Shah
+  role: MS
+  year: "2024"
+  now: 
+  col: 1
+- name: Radhika Mathuria
+  role: MS
+  year: "2023"
+  now: Tarana Wireless CA
+  col: 2
+
+- name: Puja Shukla
+  role: MS
+  year: "2023"
+  now: Marvell CA
+  col: 1
+- name: Joshua Orozco
+  role: MS
+  year: "2023"
+  now: TrellisWare Technologies, LA
+  col: 2
+
+- name: Hari Prasad Sankar
+  role: MS
+  year: "2023"
+  now: Tarana Wireless CA
+  col: 1
+- name: Gaurav Singh
+  role: MS
+  year: "2023"
+  now: Apple CA
+  col: 2
+
+- name: Shubham Jain
+  role: MS
+  year: "2023"
+  now: Qualcomm SD
+  col: 1
+- name: Pratik Ratadiya
+  role: MS
+  year: "2023"
+  now: Stealth Startup
+  col: 2
+
+- name: Siddharth Mohan
+  role: MS
+  year: "2023"
+  now: Intel CA
+  col: 1
+- name: Kamalakannan Subramani
+  role: MS
+  year: "2022"
+  now: Apple CA
+  col: 2
+
+- name: Harsh Deshpande
+  role: MS
+  year: "2023"
+  now: JPMorgan Chase
+  col: 1
+- name: Abhishek Khare
+  role: MS
+  year: "2022"
+  now: Samsung SJ
+  col: 2
 - name: Howard Chi
   role: MS
   year: "2022"
@@ -24,12 +296,12 @@
 - name: Sanjeev Anthia Ganesh 
   role: MS
   year: "2022"
-  now: 
+  now: Apple CA
   col: 2
 - name: Gautham Reddy
   role: MS
   year: "2021"
-  now: Broadcom SJ
+  now: Marvell -> PhD at NCSU
   col: 1
 - name: Nitish Kulshrestha
   role: MS
@@ -54,12 +326,12 @@
 - name: Xiangwei Shao
   role: MS
   year: "2021"
-  now: Huawei
+  now: Huawei, China
   col: 2
 - name: Hou-Wei Lin
   role: MS
   year: "2021"
-  now: Amazon SJ
+  now: Amazon Seattle
   col: 1
 - name: Yeswanth Guntupalli
   role: MS
@@ -69,7 +341,7 @@
 - name: Yeswanth Reddy Guddeti
   role: MS
   year: "2020"
-  now:
+  now: Samsung, Bangalore
   col: 1
 - name: Aman Goyal
   role: MS
@@ -166,7 +438,81 @@
   year: "2018"
   now: Qualcomm SJ
   col: 2
+
+
+
+
 #BS
+
+- name: Gavin Roberts
+  role: BS
+  year: "2023"
+  now: 
+  col: 2
+
+- name: Sharfa Pital
+  role: BS
+  year: "2025"
+  now: 
+  col: 1
+- name: Shayaun Bashar
+  role: BS
+  year: "2024"
+  now: 
+  col: 2
+
+- name: Zhengyu (Van) Huang
+  role: BS
+  year: "2024"
+  now: 
+  col: 1
+
+- name: Kanishka Roy
+  role: BS
+  year: "2024"
+  now: MS UCLA
+  col: 2
+
+- name: Wenshuo Zang
+  role: BS
+  col: 2
+- name: Yucheng Huang
+  role: BS
+  year: "2023"
+  now: MS Berkeley
+  col: 1
+- name: Ameya Mandale
+  role: BS
+  year: "2024"
+  now: 
+  col: 2
+- name: Anuj Jain
+  role: BS
+  year: "2024"
+  now: MFE at UC Berkeley
+  col: 1
+- name: Hou-Wai (Hugh) Wan
+  role: BS
+  year: "2025"
+  col: 2
+
+
+- name: YungYi Sun
+  role: BS
+  year: "2025"
+  now: MS at UCSD
+  col: 2
+- name: Sonny Cao
+  role: BS
+  year: "2025"
+  now: 
+  col: 1
+- name: Junyi Xu
+  role: BS
+  year: "2024"
+  now: MS at CMU
+  col: 2  
+
 - name: Akshit Agarwal
   role: BS
   year: "2023"
@@ -176,12 +522,12 @@
   role: BS
   year: "2023"
   now: Fast Enterprises Colorado
-  col: 2 
-- name: Raini Wu
-  role: BS
-  year: "2022"
-  now: PhD at UCSD
-  col: 1
+  col: 1 
+# - name: Raini Wu
+#   role: BS
+#   year: "2022"
+#   now: PhD at UCSD
+#   col: 1
 - name: Wen Tian
   role: BS
   year: "2022"
@@ -258,11 +604,11 @@
   year: 2020
   now:
   col: 2
-- name: Raini Wu
-  role: SRIP
-  year: 2020
-  now:
-  col: 1
+# - name: Raini Wu
+#   role: SRIP
+#   year: 2020
+#   now:
+#   col: 1
 - name: Tyler Chang
   role: SRIP
   year: 2020
@@ -329,6 +675,37 @@
   now:
   col: 2
 #Intl Summer Interns
+
+- name: Pulak Mehrotra
+  role: Intern
+  year: "2025"
+  now: BITS Pilani --> MS at Columbia
+  col: 1
+- name: Jerry Li
+  role: Intern
+  year: "2024"
+  now: UCR
+  col: 2
+- name: Pratyaksh Mundra
+  role: Intern
+  year: "2024"
+  now: 
+  col: 1
+- name: Omm Prakash
+  role: Intern
+  year: "2023"
+  now: 
+  col: 2
+- name: Satyam Srivastava
+  role: Intern
+  year: "2023"
+  now: BITS Pilani
+  col: 1
+- name: Zhe Ou
+  role: Intern
+  year: "2023"
+  now: 
+  col: 2 
 - name: Rushang Gupta
   role: Intern
   school: IITD
