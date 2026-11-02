@@ -5,7 +5,7 @@ pubtag: Wireless-Sensing-of-radios
 carousels:
   - images:
     - image: /assets/images/research/map.png
-permalink: wireless-sensing-of-radios
+permalink: /wireless-sensing-of-radios.html
 ---
 
 Sensing of Radios for autonomous systems, indoors and outdoors: 

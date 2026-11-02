@@ -12,12 +12,12 @@ permalink: research/
 </style>
 
 
-<div><a href="https://ucsdwcsng.github.io/wireless-sensing.html"><img src="/assets/images/main_page/Slide2.JPG"  width="100%"/></a></div><hr>
-<div><a href="https://ucsdwcsng.github.io/communication.html"><img src="/assets/images/main_page/Slide1.JPG"  width="100%"/></a></div><hr>
-<div><a href="https://ucsdwcsng.github.io/backscatter.html"><img src="/assets/images/main_page/Slide3.JPG"  width="100%"/></a></div><hr>
-<div><a href="https://ucsdwcsng.github.io/spectrum_sensing.html"><img src="/assets/images/main_page/Slide4.JPG"  width="100%"/></a></div><hr>
-<div><a href="https://ucsdwcsng.github.io/vehicular.html"><img src="/assets/images/main_page/Slide5.JPG"  width="100%"/></a></div><hr>
-<div><a href="https://ucsdwcsng.github.io/privacy.html"><img src="/assets/images/main_page/Slide6.JPG"  width="100%"/></a></div><hr>
+<div><a href="/wireless-sensing.html"><img src="/assets/images/main_page/Slide2.JPG" alt="Wireless sensing research"  width="100%"/></a></div><hr>
+<div><a href="/communication.html"><img src="/assets/images/main_page/Slide1.JPG" alt="Towards xG research"  width="100%"/></a></div><hr>
+<div><a href="/ubiquitousIoT.html"><img src="/assets/images/main_page/Slide3.JPG" alt="Ubiquitous IoT research"  width="100%"/></a></div><hr>
+<div><a href="/spectrum_sensing.html"><img src="/assets/images/main_page/Slide4.JPG" alt="Spectrum sensing research"  width="100%"/></a></div><hr>
+<div><a href="/vehicular.html"><img src="/assets/images/main_page/Slide5.JPG" alt="Reliable autonomous systems research"  width="100%"/></a></div><hr>
+<div><a href="/privacy.html"><img src="/assets/images/main_page/Slide6.JPG" alt="Security and privacy research"  width="100%"/></a></div><hr>
 
 
 

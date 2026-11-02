@@ -5,7 +5,7 @@ pubtag: Reliable-xG-mm-wave-Networks
 carousels:
   - images:
     - image: /assets/images/research/map.png
-permalink: reliable-xg-mm-wave-networks
+permalink: /reliable-xg-mm-wave-networks.html
 ---
 
 Enabling reliable mm-wave communication for xG networks:

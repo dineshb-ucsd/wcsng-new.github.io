@@ -3,7 +3,7 @@ title: "WCSNG - Tutorials"
 layout: page
 excerpt: "WCSNG -- Tutorials"
 sitemap: false
-permalink: tutorials
+permalink: /tutorials.html
 ---
 
 # Tutorials/ Resources

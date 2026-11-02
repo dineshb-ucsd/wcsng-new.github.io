@@ -5,7 +5,7 @@ pubtag: Sensing-Driven-Communication
 carousels:
   - images:
     - image: /assets/images/research/Agreement-Strength.png
-permalink: /sensing-driven-communication
+permalink: /sensing-driven-communication.html
 ---
 
 With ever-increasing data-rate requirements for different applications, optimizing the existing wireless networks from sub-6 GHz to THz is needed. The wireless networks need to be driven by sensing the entire spectrum to achieve optimized performance. Even with my work on full-duplex radios, the radios would be limited to sensing a fraction of the spectrum and cannot cover the entire spectrum. My vision has been to design networks driven by global sensing of the spectrum, instead of individualized sensing. Cloud management of RAN can use the sensing information to optimize the entire network of base-stations. Thus, in the emerging spectrum landscape, sensing needs to achieve high agility in space, time, frequency, and dynamic range is necessary for next-generation network optimization. The core bottleneck is to enable a low-cost entire spectrum sensing with a high-time resolution, which led to no cognitive radio deployments to facilitate dynamic spectrum use. Furthermore, it is extremely hard to sense the entire spectrum with fine resolution in time, space, and simultaneously sense weak and the strong signals that are spectrally close. 

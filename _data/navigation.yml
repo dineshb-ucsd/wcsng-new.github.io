@@ -24,6 +24,10 @@ header:
       tr      : &TR       Hakkında
       # @end locale config
     subfolderitems:
+      - name: "EdgeRIC"
+        url: https://edgeric.ucsd.edu/
+      - name: "Signals Lab"
+        url: https://wcsng.ucsd.edu/signals-lab/
       - name: "Wireless Sensing"
         url: /wireless-sensing.html
       - name: "Towards 6G"

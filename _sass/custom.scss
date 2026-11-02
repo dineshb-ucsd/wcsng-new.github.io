@@ -327,6 +327,29 @@ $landing-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, H
   }
 }
 
+/* On desktop the news panel runs the full height of the page */
+@include media-breakpoint-up(lg) {
+  .col-aside > aside:has(> .news) {
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .news {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+
+    .news__list {
+      flex: 1;
+      min-height: 0;
+      max-height: none;
+    }
+  }
+}
+
 .col-aside {
   &.visible {
     @include media-breakpoint-down(lg) {

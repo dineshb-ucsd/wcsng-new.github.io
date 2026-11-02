@@ -5,7 +5,7 @@ pubtag: Networking-and-Computing-with-Smart-Surfaces
 carousels:
   - images:
     - image: /assets/images/research/ternary.png
-permalink: networking-and-computing-with-smart-surfaces
+permalink: /networking-and-computing-with-smart-surfaces.html
 ---
 
 Smart Surfaces based wireless networking and computing (ScatterMIMO) 

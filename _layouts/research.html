@@ -92,7 +92,7 @@ layout: page
        <div class="cell cell--12 cell--md-4 cell--lg-3">
           <div class="card card--flat">
             <div class="card__image">
-              <img class="image" src="{{ people.picture }}" />
+              <img class="image" src="{{ people.picture }}" alt="{{ people.name }}" />
                 <div class="overlay overlay--bottom">
                   <header>
                     {% if people.website %}
@@ -100,7 +100,7 @@ layout: page
                     {% else %}
                       <p>{{ people.name }}</p>
                     {% endif %}
-                    <p><i style="color: #dddddd">{{ people.role }}</i></p>
+                    <p><i style="color: #dddddd">{% if people.year %}Alumni{% if people.now %}, {{ people.now }}{% endif %}{% else %}{{ people.role }}{% endif %}</i></p>
                   </header>
                 </div>
             </div>

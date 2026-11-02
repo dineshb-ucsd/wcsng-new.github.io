@@ -5,7 +5,7 @@ pubtag: Radio-Interferometry
 carousels:
   - images:
     - image: /assets/images/research/epr.png
-permalink: radio-interferometry
+permalink: /radio-interferometry.html
 ---
 
 My research career began with trying to solve an open problem in designing robust high-capacity wireless networks: self-interference, an essential consequence of the broadcast properties of the wireless medium. The wireless medium is a shared resource, and thus if nearby devices (radios) transmit at the same time (and at the same or even neighboring frequencies), the transmitted signals collide, resulting in interference. In traditional network designs, interference is considered harmful, and consequently, networks have been architected around the conservative principle of avoiding interference whenever possible, which in turn limits the capacity of the wireless network.

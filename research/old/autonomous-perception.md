@@ -5,7 +5,7 @@ pubtag: Autonomous-Perception
 carousels:
   - images:
     - image: /assets/images/research/map.png
-permalink: autonomous-perception
+permalink: /autonomous-perception.html
 ---
 
 Autonomous Perception system: Computer Vision meets Wireless Sensing. 

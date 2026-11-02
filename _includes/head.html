@@ -3,9 +3,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
 {%- include snippets/get-article-title.html article=page -%}
-<title>{%- if __return -%}{{ __return }} - {{ site.title }}{%- else -%}{{ site.title }}{%- endif -%}</title>
+{%- assign _article_title = __return | default: page.heading -%}
+<title>{%- if page.url == "/" and page.seo_title -%}{{ page.seo_title }}{%- elsif page.seo_title -%}{{ page.seo_title }} | {{ site.title }}{%- elsif _article_title -%}{{ _article_title }} | {{ site.title }}{%- else -%}{{ site.title }}{%- endif -%}</title>
 
-<meta name="description" content="{%- if page.excerpt -%}{{ page.excerpt | strip_html | strip_newlines | strip | truncate: 160 }}{%- else -%}{{ site.description }}{%- endif -%}">
+{%- assign _desc = page.seo_description -%}
+{%- unless _desc -%}
+  {%- for _item in page.description -%}
+    {%- if _item.text -%}{%- assign _desc = _item.text -%}{%- break -%}{%- endif -%}
+  {%- endfor -%}
+{%- endunless -%}
+{%- unless _desc -%}{%- assign _desc = page.excerpt -%}{%- endunless -%}
+{%- assign _desc = _desc | strip_html | normalize_whitespace -%}
+{%- if _desc == "" -%}{%- assign _desc = site.description | normalize_whitespace -%}{%- endif -%}
+{%- assign _desc = _desc | truncate: 160 -%}
+<meta name="description" content="{{ _desc | escape_once }}">
+{%- if page.robots -%}<meta name="robots" content="{{ page.robots }}">{%- endif -%}
 <link rel="canonical" href="{%- include snippets/page-url.html -%}">
 
 {%- assign _paths_rss = site.paths.rss | default: site.data.variables.default.paths.rss -%}

@@ -5,7 +5,7 @@ pubtag: Ultra-Low-Power-Connectivity-and-Sensing
 carousels:
   - images:
     - image: /assets/images/research/map.png
-permalink: ultra-low-power-connectivity-and-sensing
+permalink: /ultra-low-power-connectivity-and-sensing.html
 ---
 
 Scalable and Ultra-low-power WiFi connectivity for IoT [WCSNG](https://wcsng.ucsd.edu/ubiquitousIoT/)

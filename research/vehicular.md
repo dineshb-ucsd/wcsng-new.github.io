@@ -1,6 +1,8 @@
 ---
+seo_title: "Autonomous Vehicle Radar and Perception Research"
+seo_description: "Radar perception and sensor fusion for self-driving in bad weather, including the Shenron and C-Shenron radar simulators."
 layout: research
-permalink: vehicular
+permalink: /vehicular.html
 heading: Reliable Autonomous Systems
 pubtag: Vehicle
 carousels:

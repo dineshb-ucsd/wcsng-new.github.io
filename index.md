@@ -1,4 +1,6 @@
 ---
+seo_title: "WCSNG @ UC San Diego | Wireless Communications, Sensing and Networking"
+seo_description: "WCSNG is Dinesh Bharadia's lab at UC San Diego. We build wireless systems for 5G and 6G, Open RAN, sensing, autonomous vehicles, robotics, and low-power IoT."
 layout: article
 aside:
   news: true
@@ -50,32 +52,42 @@ The mission of the overall group is to solve real-world problems by first identi
 <h3 class="landing-section-title">Key Research Areas</h3>
 
 <div class="research-grid">
-  <a class="research-card" href="https://wcsng.ucsd.edu/wireless-sensing.html">
+  <a class="research-card" href="https://edgeric.ucsd.edu/">
+    <span class="research-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></span>
+    <span class="research-card__title">EdgeRIC</span>
+    <span class="research-card__desc">Real-time, open-source AI control for 5G and Open RAN</span>
+  </a>
+  <a class="research-card" href="https://wcsng.ucsd.edu/signals-lab/">
+    <span class="research-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-8 4 16 3-8h6"/></svg></span>
+    <span class="research-card__title">Signals Lab</span>
+    <span class="research-card__desc">Sensing wireless signals to improve spectrum use, privacy &amp; security</span>
+  </a>
+  <a class="research-card" href="/wireless-sensing.html">
     <span class="research-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1.6"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19.1 4.9a10 10 0 0 1 0 14.2M4.9 19.1a10 10 0 0 1 0-14.2"/></svg></span>
     <span class="research-card__title">Wireless Sensing</span>
     <span class="research-card__desc">CM-accurate localization across WiFi, UWB, BLE &amp; 5G</span>
   </a>
-  <a class="research-card" href="https://wcsng.ucsd.edu/communication.html">
+  <a class="research-card" href="/communication.html">
     <span class="research-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="10" x2="12" y2="21"/><path d="M9 21h6"/><path d="M7.6 8.4a4 4 0 0 1 8.8 0"/><path d="M5 6a7 7 0 0 1 14 0"/><circle cx="12" cy="9" r="1.3"/></svg></span>
     <span class="research-card__title">Towards 6G</span>
     <span class="research-card__desc">Sustainable massive MIMO &amp; real-time RAN intelligence</span>
   </a>
-  <a class="research-card" href="https://wcsng.ucsd.edu/backscatter.html">
+  <a class="research-card" href="/ubiquitousIoT.html">
     <span class="research-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M9.5 3v2M14.5 3v2M9.5 19v2M14.5 19v2M3 9.5h2M3 14.5h2M19 9.5h2M19 14.5h2"/></svg></span>
     <span class="research-card__title">Ubiquitous IoT</span>
     <span class="research-card__desc">Ultra-low-power backscatter &amp; wireless power transfer</span>
   </a>
-  <a class="research-card" href="https://wcsng.ucsd.edu/spectrum_sensing.html">
+  <a class="research-card" href="/spectrum_sensing.html">
     <span class="research-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="20" x2="4" y2="14"/><line x1="9" y1="20" x2="9" y2="9"/><line x1="14" y1="20" x2="14" y2="4"/><line x1="19" y1="20" x2="19" y2="11"/></svg></span>
     <span class="research-card__title">Spectrum Sensing</span>
     <span class="research-card__desc">Sweeping 5 GHz of spectrum in a millisecond</span>
   </a>
-  <a class="research-card" href="https://wcsng.ucsd.edu/vehicular.html">
+  <a class="research-card" href="/vehicular.html">
     <span class="research-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l2-5.2A2 2 0 0 1 6.9 6.5h10.2A2 2 0 0 1 19 7.8L21 13"/><path d="M3 13h18v4H4a1 1 0 0 1-1-1z"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></svg></span>
     <span class="research-card__title">Autonomous Vehicles</span>
     <span class="research-card__desc">Radar perception &amp; sensor fusion in bad weather</span>
   </a>
-  <a class="research-card" href="https://wcsng.ucsd.edu/privacy.html">
+  <a class="research-card" href="/privacy.html">
     <span class="research-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9.2 12l2 2 3.6-4"/></svg></span>
     <span class="research-card__title">Security &amp; Privacy</span>
     <span class="research-card__desc">Exposing &amp; defending RF systems from attacks</span>

@@ -4,6 +4,7 @@ gem "jekyll", ">= 3.7"
 gem "jekyll-feed"
 gem "jekyll-paginate", "~> 1.1.0"
 gem "jekyll-sitemap", "~> 1.4"
+gem "jekyll-redirect-from"
 gem "jemoji"
 
 gem "kramdown-parser-gfm"

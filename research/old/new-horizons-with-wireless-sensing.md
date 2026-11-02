@@ -5,7 +5,7 @@ pubtag: New-Horizons-with-Wireless-Sensing
 carousels:
   - images:
     - image: /assets/images/research/map.png
-permalink: new-horizons-with-wireless-sensing
+permalink: /new-horizons-with-wireless-sensing.html
 ---
 
 Extending the Horizon of wireless sensing – Continuum Force Sensing: 

@@ -7,7 +7,7 @@
   <h2 class="news__title">News</h2>
 
   <ul class="news__list">
-    {% for article in site.data.news.news limit:9 %}
+    {% for article in site.data.news.news %}
     <li class="news__item">
       <span class="news__date">{{ article.date }}</span>
       <p class="news__headline">{{ article.headline }}</p>

@@ -1,6 +1,8 @@
 ---
+seo_title: "5G, 6G and Open RAN Research"
+seo_description: "Our work on NextG cellular: AI-native 5G and 6G, real-time Open RAN control with EdgeRIC, sustainable massive MIMO with GreenMO, and LEO satellite links."
 layout: research
-permalink: communication
+permalink: /communication.html
 heading: Towards xG
 pubtag: Communications
 carousels:

@@ -87,6 +87,13 @@
   col: 2 
   picture: /assets/images/teampic/agrim.png
   website: https://agrim9.github.io
+- name: Rohith Reddy Vennam
+  role: PhD
+  year: "2026"
+  now: SpaceX
+  col: 2
+  picture: /assets/images/teampic/rohith.jpg
+  website: https://acsweb.ucsd.edu/~rvennam
 # - name: Hans Yu
 #   role: PhD
 #   year: "2019"

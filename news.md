@@ -1,4 +1,6 @@
 ---
+redirect_from:
+  - /news.html
 title: "News"
 layout: article
 permalink: /allnews.html

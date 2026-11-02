@@ -1,4 +1,6 @@
 ---
+sitemap: false
+robots: noindex
 layout: articles
 title: Team
 ---

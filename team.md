@@ -1,4 +1,7 @@
 ---
+redirect_from:
+  - /team.html
+seo_description: "People in WCSNG at UC San Diego: Prof. Dinesh Bharadia, PhD students, and alumni now in faculty and industry roles."
 layout: articles
 title: Team
 permalink: team/
@@ -117,7 +120,7 @@ permalink: team/
     <div class="card card--flat">
       <a class="card__link" href="https://dineshb-ucsd.github.io/">
       <div class="card__image">
-        <img class="image" src="/assets/images/teampic/dinesh.jpg" />
+        <img class="image" src="/assets/images/teampic/dinesh.jpg" alt="Dinesh Bharadia" />
             <div class="overlay overlay--bottom">
               <header>
                 <p class="member-name">Dinesh Bharadia</p>
@@ -132,7 +135,7 @@ permalink: team/
     <div class="card card--flat">
       <a class="card__link" href="https://en.wikipedia.org/wiki/Fredric_J._Harris">
       <div class="card__image">
-        <img class="image" src="/assets/images/teampic/fred.jpg" />
+        <img class="image" src="/assets/images/teampic/fred.jpg" alt="Fredric J. Harris" />
             <div class="overlay overlay--bottom">
               <header>
                 <p class="member-name">Fred Harris</p>
@@ -250,7 +253,7 @@ permalink: team/
         <div class="card card--flat">
             {% if people.website %}<a class="card__link" href="{{ people.website }}">{% endif %}
             <div class="card__image">
-              <img class="image" src="{{ people.picture }}" />
+              <img class="image" src="{{ people.picture }}" alt="{{ people.name }}" />
               <div class="overlay overlay--bottom">
                 <header>
                   <p class="member-name">{{ people.name }}</p>
@@ -299,7 +302,7 @@ permalink: team/
         <div class="card card--flat">
           {% if people.website %}<a class="card__link" href="{{ people.website }}">{% endif %}
           <div class="card__image">
-            <img class="image" src="{{ people.picture }}" />
+            <img class="image" src="{{ people.picture }}" alt="{{ people.name }}" />
             <div class="overlay overlay--bottom">
               <header>
                 <p class="member-name">{{ people.name }}</p>

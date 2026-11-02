@@ -1,6 +1,8 @@
 ---
+seo_title: "Spectrum Sensing Research"
+seo_description: "Wideband spectrum sensing for crowded, fragmented bands, including sweeping 5 GHz of spectrum in a millisecond."
 layout: research
-permalink: spectrum_sensing
+permalink: /spectrum_sensing.html
 heading: Spectrum Sensing
 pubtag: Spectrum-Sensing
 carousels:

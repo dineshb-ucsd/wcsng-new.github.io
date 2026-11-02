@@ -3,10 +3,6 @@
   picture: /assets/images/teampic/dinesh.jpg
   website: https://dineshb-ucsd.github.io
 
-- name: Rohith Reddy Vennam
-  role: PhD
-  picture: /assets/images/teampic/rohith.jpg
-  website: https://acsweb.ucsd.edu/~rvennam
 - name: Nagarjun Bhat
   role: PhD
   website: https://www.linkedin.com/in/nagarjun-bhat
@@ -18,7 +14,7 @@
 - name: Sreevatsank Kadaveru
   role: PhD
   picture: /assets/images/teampic/vatsank.jpg
-  website: https://www.linkedin.com/in/sreevatsank-k/
+  website: https://sreevatsankk.github.io/
 - name: Adel Heidari
   role: PhD
   picture: /assets/images/teampic/adel.JPG  

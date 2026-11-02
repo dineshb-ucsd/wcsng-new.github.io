@@ -1,6 +1,10 @@
 ---
+redirect_from:
+  - /backscatter.html
+seo_title: "Ubiquitous IoT and Backscatter Research"
+seo_description: "Ultra-low-power IoT built on RF backscatter, for low-power communication and wireless sensing."
 layout: research
-permalink: ubiquitousIoT
+permalink: /ubiquitousIoT.html
 heading: Ubiquitous IoT
 pubtag: Backscatter
 carousels:

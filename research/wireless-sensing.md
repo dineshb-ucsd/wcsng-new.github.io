@@ -1,6 +1,8 @@
 ---
+seo_title: "Wireless Sensing and Localization Research"
+seo_description: "Centimeter-accurate localization across WiFi, UWB, BLE, and 5G, along with the security and privacy questions it raises."
 layout: research
-permalink: wireless-sensing
+permalink: /wireless-sensing.html
 heading: Wireless Sensing
 pubtag: Wireless-Sensing
 carousels:
@@ -18,4 +20,4 @@ people:
   - Vaibhav Anand
 ---
 
-Our work in wireless sensing is primarily geared towards improving state of the art in wireless localization for UWB, BLE and WiFi equipped devices, and considering the security and privacy implications of techonology we develop. Along these lines, we have developed mulitple open source hardware systems using off-the-shelf BLE, WiFi and UWB chipsets and devices to test novel localization algorithms, probe security concerns in these systems, and develop better defenses to preserve a wireless user's privacy. 
+Our work in wireless sensing is primarily geared towards improving state of the art in wireless localization for UWB, BLE and WiFi equipped devices, and considering the security and privacy implications of technology we develop. Along these lines, we have developed multiple open source hardware systems using off-the-shelf BLE, WiFi and UWB chipsets and devices to test novel localization algorithms, probe security concerns in these systems, and develop better defenses to preserve a wireless user's privacy. 
