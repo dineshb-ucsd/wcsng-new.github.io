@@ -46,10 +46,10 @@ exploiting the sparsity in the spectrum to compress the information captured**. 
 <h3>Projects</h3>
 
 - [Nomad](/signals-lab/project/nomad/): high-throughput spectrum sensing with a line rate of 40 Gbit/s.
-- [PHYNet](/signals-lab/project/phynet/): a labelled PHY-layer dataset for evaluating PHY-layer algorithms.
-- [CamoPHYlage](/signals-lab/project/camophylage/): adversarial mimicking techniques that evade PHY-layer detectors.
-- [rfYOLO](/signals-lab/project/rfyolo/): phase as an additional modality for signal detection with YOLO networks.
-- [SpecSense](/signals-lab/project/specsense/): blind detection and tracking of low-probability-of-intercept signals.
+- [PHYNet](https://sreevatsankk.github.io/research/phynet/): a labelled PHY-layer dataset for evaluating PHY-layer algorithms.
+- [CamoPHYlage](https://sreevatsankk.github.io/research/camophylage/): adversarial mimicking techniques that evade PHY-layer detectors.
+- [rfYOLO](https://sreevatsankk.github.io/research/rfyolo/): phase as an additional modality for signal detection with YOLO networks.
+- [SpecSense](https://sreevatsankk.github.io/research/specsense/): blind detection and tracking of low-probability-of-intercept signals.
 
 <h3>Future Work</h3>
 
