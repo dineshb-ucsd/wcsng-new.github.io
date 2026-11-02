@@ -16,6 +16,8 @@ carousels:
     - image: /assets/images/wireless4.png
 people:
   - Dinesh Bharadia
+  - Sreevatsank Kadaveru
+  - Adel Heidari
   - Ish Kumar Jain
   - Agrim Gupta
   - Archana Bura

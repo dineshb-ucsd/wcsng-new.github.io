@@ -1,4 +1,5 @@
 ---
+seo_description: "Searchlight is an accurate, sensitive, and fast RF energy detection system."
 layout: publication
 title: "Searchlight: An Accurate, Sensitive, and Fast RF Energy Detection System"
 short_title: "SearchLight"

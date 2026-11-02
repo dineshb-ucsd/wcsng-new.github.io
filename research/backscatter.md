@@ -19,6 +19,7 @@ carousels:
 
 people:
   - Dinesh Bharadia
+  - Ishan Bansal
   - Manideep Dunna
   - Agrim Gupta
   - Nagarjun Bhat

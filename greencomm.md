@@ -1,4 +1,6 @@
 ---
+seo_title: "Cross-Layer Interference Management: Bringing Interference Alignment to Reality"
+seo_description: "Cross-layer interference management for wireless networks, aimed at the growing energy demands of base stations and user devices."
 layout: page
 # title: "Adaptive Smart Surfaces for Wireless Channel Morphing to enable full multiplexing and multi-user gains"
 permalink: greencomm/

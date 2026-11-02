@@ -12,6 +12,7 @@ carousels:
     - image: /assets/images/ble-sec.webp
 people:
   - Dinesh Bharadia
+  - William Hunter
   - Roshan Ayyalasomayajula
   - Aditya Arun
   - Ish Kumar Jain

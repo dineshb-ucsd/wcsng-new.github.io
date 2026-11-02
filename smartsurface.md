@@ -1,4 +1,6 @@
 ---
+seo_title: "Adaptive Smart Surfaces for Wireless Channel Morphing"
+seo_description: "Smart surfaces that reshape the wireless channel to deliver the full multiplexing and multi-user gains of multi-antenna systems."
 layout: page
 # title: "Adaptive Smart Surfaces for Wireless Channel Morphing to enable full multiplexing and multi-user gains"
 permalink: smartsurfaces/

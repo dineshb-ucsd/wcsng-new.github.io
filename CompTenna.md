@@ -1,4 +1,6 @@
 ---
+seo_title: "CompTenna: Analog Computation from Sub-6 GHz to mmWave Antennas"
+seo_description: "CompTenna brings analog computation to antennas from sub-6 GHz to mmWave, for wireless communication and sensing."
 layout: page
 # title: "CompTenna: Bringing Analog Computations to mm-wave and sub-THz Antennas"
 short_title: "Computational Antenna"

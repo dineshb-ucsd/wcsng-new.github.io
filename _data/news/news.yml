@@ -41,7 +41,7 @@
   headline: Ishan presents SenSync at IEEE RFID 2025 and wins the Best Paper award. Congratulations Ishan! Read paper <a href="https://wcsng.ucsd.edu/sensync">here</a>.
 
 - date: Jan 2025
-  headline: PhaseMO paper got accepted at Infocom'25. Congratulations Adel, Ish, and Agrim! Read paper <a href="https://wcsng.ucsd.edu/phasemo">here</a>.
+  headline: PhaseMO paper got accepted at Infocom'25. Congratulations Adel, Ish, and Agrim! Read paper <a href="/PhaseMO/">here</a>.
 
 - date: November 2024
   headline: Ishan presents <a href="https://wcsng.ucsd.edu/zensetag_demo">ZenseTag demo</a> at MobiCom 2024, which won the Best Demo Runner Up award. Congratulations Ishan, Nagarjun, Agrim and Harine!
@@ -113,7 +113,7 @@
   headline: 1st International Workshop on AI Perception at CVPR 2022 is live. See more details <a href="https://wcsng.ucsd.edu/waip">here</a>.
 
 - date: May 2022
-  headline: BLE security paper is out. See more details <a href="https://wcsng.ucsd.edu/ble-privacy/">here</a>. Congrats Hadi!
+  headline: BLE security paper is out. See more details <a href="/ble/">here</a>. Congrats Hadi!
 
 - date: Apr 2022
   headline: WiFi localization and mapping paper <a href="https://wcsng.ucsd.edu/p2slam/">P2SLAM</a> accepted at IEEE Robotics and Automation'22. P2SLAM dataset is also released. Congrats Aditya Arun!
@@ -158,10 +158,10 @@
   headline: ECCV'20 paper got accepted on <a href="https://arxiv.org/pdf/2007.14511.pdf">S3Net- Semantic-Aware Self-Supervised Depth Estimation with Monocular Videos and Synthetic Data.</a> Congrats Inderjot and team!
 
 - date: June 2020
-  headline: WCSNG is opensourcing largest available, real-world indoor Location labelled WiFi CSI dataset, <a href="https://wcsng.ucsd.edu/wild/">WILD</a> for non-profit research purposes.
+  headline: WCSNG is opensourcing largest available, real-world indoor Location labelled WiFi CSI dataset, <a href="/dloc/">WILD</a> for non-profit research purposes.
 
 - date: June 2020
-  headline: <a href="https://wcsng.ucsd.edu/bluble/">BluBLE</a>, our Covid-19 app is in news  <a href="bit.ly/2OxZ7P6">here</a> and <a href="https://techxplore.com/news/2020-07-bluble-covid-accurate-contact.html">here</a>.
+  headline: <a href="https://wcsng.ucsd.edu/bluble/">BluBLE</a>, our Covid-19 app is in news  <a href="https://bit.ly/2OxZ7P6">here</a> and <a href="https://techxplore.com/news/2020-07-bluble-covid-accurate-contact.html">here</a>.
 
 - date: June 2020
   headline: ScatterMIMO- our smart reflecting surface that can double the WiFi throughput is in <a href="https://bit.ly/2R3r3vy">UCSD news</a> and <a href="https://www.hackster.io/news/scattermimo-smart-surface-runs-for-a-year-on-a-button-cell-doubles-wi-fi-speeds-8ea4f374cc59">Hackster.io</a>.
@@ -173,7 +173,7 @@
   headline: Roshan qualified PhD candidate exam. Congrats Roshan!
 
 - date: Mar 2020
-  headline: Roshan presented "<a href='http://wcsng.ucsd.edu/locap/'>LocAP</a>" at NSDI, Santa Clara. <img src='images/newspic/Roshan-locap.jpg' class='img-responsive' width=80% />
+  headline: Roshan presented "<a href='http://wcsng.ucsd.edu/locap/'>LocAP</a>" at NSDI, Santa Clara.
 
 - date: Dec 2019
   headline: ISSCC 2020 accepted "<a href='http://efficiency.ucsd.edu/2019/12/isscc-2020-paper-tutorial-two-forums-and-an-industry-showcase/'>A 28μW IoT Tag That Can Communicate with Commodity WiFi</a>"
@@ -191,7 +191,7 @@
   headline: Aditya, Agrim, Raghav, Nikhil, and Byungjun joined WCSNG. Welcome!
 
 - date: 20 June 2019
-  headline: "Yeswanth presented <a href='https://dl.acm.org/citation.cfm?id=3326088'>SparSDR</a> at <a href='https://www.sigmobile.org/mobisys/2019/'>Mobysis 2019</a>, Seoul, South Korea. <img src='images/newspic/yesw.jpg' class='img-responsive' width=80% /> "
+  headline: "Yeswanth presented <a href='https://dl.acm.org/citation.cfm?id=3326088'>SparSDR</a> at <a href='https://www.sigmobile.org/mobisys/2019/'>Mobysis 2019</a>, Seoul, South Korea. "
 
 - date: 20 June 2019
   headline: "Siddharth presented <a href='https://dl.acm.org/citation.cfm?id=3307334.3326077'>Capttery</a> at <a href='https://www.sigmobile.org/mobisys/2019/'>Mobysis 2019</a>, Seoul, South Korea."
@@ -200,7 +200,7 @@
   headline: "Yue, Aman, and Yongxi presented their work on <a href='https://arxiv.org/abs/1812.05642'>SIGNet</a> in <a href='http://cvpr2019.thecvf.com/'>CVPR 2019</a>, Long Beach, CA, USA."
 
 - date: 9 June 2019
-  headline: "Year-end celebration for graduating studnets. <img src='images/newspic/party.jpg' class='img-responsive'  width=80% />"
+  headline: "Year-end celebration for graduating studnets."
 
 - date: 1 June 2019
   headline: "Yeswanth and Hadi won <a href='https://www.qualcomm.com/invention/research/university-relations/innovation-fellowship/2019-north-america' >Qualcomm Innovation Fellowship</a> 2019 for their work on <a href='https://cseweb.ucsd.edu/~schulman/docs/nsdi19-sweepsense.pdf'>SweepSense</a>."
