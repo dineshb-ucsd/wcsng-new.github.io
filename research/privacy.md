@@ -1,4 +1,6 @@
 ---
+redirect_from:
+  - /security.html
 seo_title: "Wireless Security and Privacy Research"
 seo_description: "Spoofing and jamming attacks on wireless systems, the defenses against them, and privacy-preserving localization."
 layout: research
@@ -20,4 +22,4 @@ people:
     - Wei Sun 
 ---
 
-Our research towards securing the wireless infrastructure for both communications and sensing. We demonstrated several types of attacks such as Spoofing, Jamming, Obfuscation, and privacy-preserving localization system. We developed algorithm to detect hidden IoT devices even when they are not connected to any wireless network, by detecting their unique Emanation signatures, protect against BLE location attack, and spoofing automototive radars.
+Our research towards securing the wireless infrastructure for both communications and sensing. We demonstrated several types of attacks such as Spoofing, Jamming, Obfuscation, and privacy-preserving localization system. We developed algorithm to detect hidden IoT devices even when they are not connected to any wireless network, by detecting their unique Emanation signatures, protect against BLE location attack, and spoofing automotive radars.

@@ -1,6 +1,7 @@
 ---
 redirect_from:
   - /team.html
+  - /team-ori.html
 seo_description: "People in WCSNG at UC San Diego: Prof. Dinesh Bharadia, PhD students, and alumni now in faculty and industry roles."
 layout: articles
 title: Team

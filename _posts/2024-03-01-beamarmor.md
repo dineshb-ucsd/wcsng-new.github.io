@@ -20,7 +20,7 @@ eqcon: false #Put true if you want equal contrribution on pub page
 conference: "Hotmobile 2024 [Live Demo at Milcom'23 and Hotmobile'24]"
 conference_site: http://www.hotmobile.org/2024/index.php?id=program
 paper: /files/beamarmor.pdf
-video: https://edgeric.github.io/index.html
+video: https://edgeric.ucsd.edu/
 video_str: Video
 slides: /files/slides_beamarmor.pdf
 github: https://github.com/ucsdwcsng/beamarmor
