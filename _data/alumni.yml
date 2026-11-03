@@ -114,13 +114,18 @@
 - name: Haochen Wang
   role: MS
   year: "2026"
-  now: PhD at Virginia Tech
+  now: Apple CA
   col: 1
 - name: Qingyuan (Pearson) Zheng
   role: MS
   year: "2026"
   now: PhD at Duke University
   col: 2
+- name: Kishore Rajendran
+  role: MS
+  year: "2026"
+  now: Qualcomm CA
+  col: 1
 - name: William Hunter
   role: MS
   year: "2024"
