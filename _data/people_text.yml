@@ -1,7 +1,6 @@
 # Masters Students
-- name: Kishore Rajendran
+- name: Aaron Tartz
   role: MS
-  year: "2026"
   now: 
   col: 1
 
@@ -30,6 +29,11 @@
   role: BS
   year: "2026"
   now: 
+  col: 1
+
+- name: Junran Wang
+  role: BS
+  now:
   col: 1
 
 
