@@ -1,3 +1,46 @@
 <!-- start custom head snippets -->
 
+{%- assign _og_image = page.cover | default: "/assets/images/atkinson.jpeg" -%}
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:type" content="{% if page.date %}article{% else %}website{% endif %}">
+<meta property="og:title" content="{{ page.seo_title | default: page.title | default: page.heading | default: site.title | strip_html | escape_once }}">
+<meta property="og:description" content="{{ _desc | escape_once }}">
+<meta property="og:url" content="{% include snippets/page-url.html %}">
+<meta property="og:image" content="{{ _og_image | absolute_url }}">
+<meta name="twitter:card" content="summary_large_image">
+
+{% if page.url == "/" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ResearchOrganization",
+  "name": "Wireless Communications, Sensing and Networking Group (WCSNG)",
+  "alternateName": ["WCSNG", "UCSD WCSNG"],
+  "url": "https://wcsng.ucsd.edu/",
+  "parentOrganization": {
+    "@type": "CollegeOrUniversity",
+    "name": "University of California, San Diego",
+    "url": "https://ucsd.edu"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Dinesh Bharadia",
+    "url": "https://dineshb-ucsd.github.io/"
+  },
+  "sameAs": [
+    "https://github.com/ucsdwcsng",
+    "https://huggingface.co/wcsng"
+  ],
+  "knowsAbout": [
+    "5G and 6G cellular networks",
+    "Open RAN and AI-RAN",
+    "Wireless sensing and localization",
+    "Millimeter-wave and massive MIMO",
+    "Autonomous vehicle radar perception",
+    "Low-power IoT and backscatter"
+  ]
+}
+</script>
+{% endif %}
+
 <!-- end custom head snippets -->

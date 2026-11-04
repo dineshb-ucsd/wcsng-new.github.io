@@ -1,0 +1,11 @@
+.git
+_site
+.sass-cache
+vendor
+.bundle
+node_modules
+.jekyll-cache
+.jekyll-metadata
+
+# Never let a host-generated lock pin the container build
+Gemfile.lock

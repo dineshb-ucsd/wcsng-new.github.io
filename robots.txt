@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wcsng.ucsd.edu/sitemap.xml
+Sitemap: https://wcsng.ucsd.edu/signals-lab/sitemap.xml
+Sitemap: https://wcsng.ucsd.edu/sitemap-extra.xml

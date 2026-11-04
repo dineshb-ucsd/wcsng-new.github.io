@@ -1,3 +1,20 @@
+- title: "Densify & Conquer: Densified, smaller base-stations can conquer the increasing carbon footprint problem in nextG wireless"
+  paper:  https://arxiv.org/abs/2403.13611
+  authors: Agrim Gupta, Adel Heidari, Jiaming Jin, Dinesh Bharadia
+  conference:
+    url: https://arxiv.org/abs/2403.13611
+    display:  "[Arxiv 2024]"
+  image: 
+  github:
+
+- title: "R-fiducial: Millimeter Wave Radar Fiducials for Sensing Traffic Infrastructure"
+  paper:  https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10199374
+  authors: Kshitiz Bansal, Manideep Dunna, Sanjeev Ganesh, Eamon Patmasing, Dinesh Bharadia
+  conference:
+    url: https://events.vtsociety.org/vtc2023-spring/
+    display:  "[VTC-spring 2023]"
+  image: 
+  github:
 - title: "mmFlexible: Flexible Directional Frequency Multiplexing for Multi-user mmWave Networks"
   paper:  files/mmflexible.pdf
   authors: Ish Kumar Jain, Rohith Reddy Vennam, Raghav Subbaraman, Dinesh Bharadia

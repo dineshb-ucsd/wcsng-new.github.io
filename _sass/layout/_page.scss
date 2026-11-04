@@ -115,7 +115,9 @@ html,
       }
     }
     @include media-breakpoint-down(lg) {
-      display: none;
+      &:not(.visible) {
+        display: none;
+      }
     }
   }
 }

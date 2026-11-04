@@ -84,7 +84,7 @@ $layout: (
   content-max-width:      950px,
   sidebar-width:          250px,
   sidebar-header-height:  3rem,
-  aside-width:            220px
+  aside-width:            320px
 );
 
 //     sm       md       lg
@@ -94,6 +94,7 @@ $layout: (
 $responsive: (
   sm:                      0,
   md:                      500px,
+  mdplus:                  800px,
   lg:                      1024px
 );
 

@@ -1,7 +1,7 @@
 header:
   - titles:
       # @start locale config
-      en      : &EN       Research 
+      en      : &EN       Research
       en-GB   : *EN
       en-US   : *EN
       en-CA   : *EN
@@ -24,19 +24,23 @@ header:
       tr      : &TR       Hakkında
       # @end locale config
     subfolderitems:
+      - name: "EdgeRIC"
+        url: https://edgeric.ucsd.edu/
+      - name: "Signals Lab"
+        url: https://wcsng.ucsd.edu/signals-lab/
       - name: "Wireless Sensing"
-        url: /wireless.html
+        url: /wireless-sensing.html
       - name: "Towards 6G"
-        url: /6g.html
+        url: /communication.html
       - name: "Ubiquitous IoT"
-        url: /iot.html
+        url: /ubiquitousIoT.html
       - name: "Spectrum Sensing"
-        url: /spectrum.html
+        url: /spectrum_sensing.html
       - name: "Autonomous Vehicles"
-        url: /vehicle.html
+        url: /vehicular.html
       - name: "Security and Privacy"
-        url: /security.html
-  
+        url: /privacy.html
+
   - titles:
       # @start locale config
       en      : &EN       Team
@@ -61,7 +65,7 @@ header:
       fr-LU   : *FR
       tr      : &TR       Hakkında
       # @end locale config
-    url: /team.html
+    url: /team/
 
   - titles:
       # @start locale config
@@ -87,7 +91,7 @@ header:
       fr-LU   : *FR
       tr      : &TR       Arşivdekiler
       # @end locale config
-    url: /publist.html
+    url: /publications/
 
   - titles:
       # @start locale config
@@ -113,5 +117,31 @@ header:
       fr-LU   : *FR
       tr      : &TR       Hakkında
       # @end locale config
-    url: /code.html
+    url: /code/
 
+  - titles:
+      en : &EN Hosted Events
+    subfolderitems:
+      - name: Mobicom'26 Open-AI RAN
+        url: https://wcsng.ucsd.edu/open-ai-ran-2026/
+      - name: Mobicom'25 Open-AI RAN
+        url: https://wcsng.ucsd.edu/open-ai-ran-2025/
+      - name: Mobicom'24 Open-AI RAN
+        url: https://wcsng.ucsd.edu/open-ai-ran-2024/
+      - name: Mobicom'23 mmNets
+        url: https://wcsng.ucsd.edu/mmNets2023/
+      - name: Mobicom'23 S<sup>3</sup>
+        url: https://wcsng.ucsd.edu/s3/
+      - name: CVPR'22 WAIP
+        url: https://wcsng.ucsd.edu/waip/
+      - name: BluBLE
+        url: https://wcsng.ucsd.edu/bluble/
+  - titles:
+      en : &EN Life@WCSNG
+    subfolderitems:
+      - name: Docs
+        url: https://wcsng.ucsd.edu/docs/
+      - name: Pics!
+        url: /pictures
+      - name: Join Us!
+        url: https://wcsng.ucsd.edu/vacancies.html

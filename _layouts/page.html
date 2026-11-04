@@ -5,6 +5,7 @@ aside:
 sidebar:
   nav: layouts
 ---
+
 {%- assign _page_mode = page.mode | default: layout.mode | default: site.data.variables.default.page.mode -%}
 {%- assign _page_type = page.type | default: layout.type | default: site.data.variables.default.page.type -%}
 {%- assign _article_header_type = page.article_header.type | default: layout.article_header.type -%}
@@ -31,11 +32,10 @@ sidebar:
   source0=layout.comment source1=page.comment -%}
 {%- assign _comment = __return -%}
 
-
 {%- if page.sidebar -%}
 <div class="layout--page layout--page--sidebar clearfix js-page-root">
   <div class="page__mask d-print-none js-page-mask js-sidebar-hide"></div>
-  <div class="page__viewport">
+  <div class="page__viewport" style="margin-top: 70px;"> <!-- Add margin-top here -->
     <div class="page__actions d-print-none">
       <div class="button button--circle button--lg box-shadow-2 sidebar-button js-sidebar-show">
         <i class="fas fa-bars icon--show"></i>
@@ -49,7 +49,7 @@ sidebar:
       </div>
 
 {%- else -%}
-<div class="layout--page js-page-root">
+<div class="layout--page js-page-root" style="margin-top: 70px;"> <!-- Add margin-top here -->
 {%- endif -%}
 
     {%- assign _page_main_class = 'page__main js-page-main' -%}
@@ -82,7 +82,6 @@ sidebar:
         {%- endif -%}
         </div>
       {%- endif -%}
-
 
         <div class="page__content">
         {%- if _article_header_type == 'overlay' or _article_header_type == 'cover' -%}
@@ -176,17 +175,27 @@ sidebar:
 
         {%- endif -%}
 
-
         {%- if _full_width == false -%}
           <div class ="main">
         {%- endif -%}
+            {%- if page.aside.news -%}
+              <a class="news-sidebar-link" onclick="document.getElementsByClassName('col-aside')[0].classList.toggle('visible');this.hidden=true">
+                News
+              </a>
+            {%- endif -%}
             <div class="grid grid--reverse">
 
               <div class="col-aside d-print-none js-col-aside">
                 {%- if page.aside -%}
+                {% if page.aside.toc %}
                   <aside class="page__aside js-page-aside">
                     {%- include aside/toc.html -%}
                   </aside>
+                {% else if page.aside.news %}
+                  <aside class="page__aside">
+                    {%- include news.html -%}
+                  </aside>
+                {% endif %}
                 {%- endif -%}
               </div>
 
@@ -259,7 +268,7 @@ sidebar:
 
 {%- if page.aside -%}
 <script>
-  /* toc must before affix, since affix need to konw toc' height. */
+  /* toc must before affix, since affix need to know toc's height. */
   {%- if page.aside.toc -%}{%- include scripts/aside/toc.js -%}{%- endif -%}
   {%- include scripts/aside/affix.js -%}
 </script>

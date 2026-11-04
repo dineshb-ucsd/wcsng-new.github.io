@@ -18,11 +18,11 @@
 ##############################
 text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
 highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
-url     : # the base hostname & protocol for your site e.g. https://www.someone.com
+url     : https://wcsng.ucsd.edu # the base hostname & protocol for your site e.g. https://www.someone.com
 baseurl : # does not include hostname
 title   : WCSNG @ UC San Diego
 description: > # this means to ignore newlines until "Language & timezone"
-  Your Site Description
+  WCSNG is Dinesh Bharadia's wireless systems lab at UC San Diego, working on 5G and 6G, Open RAN, wireless sensing, autonomous radar, and low-power IoT.
 
 
 ## => Language and Timezone
@@ -35,10 +35,10 @@ timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for
 ##############################
 author:
   type      : # "person" (default), "organization"
-  name      : Your Name
+  name      : WCSNG, UC San Diego
   url       :
   avatar    : # path or url of avatar image (square)
-  bio       : I am an amazing person.
+  bio       : Wireless Communications, Sensing and Networking Group at UC San Diego.
   email     :
   facebook  : # "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name
   twitter   : # "user_name" the last part of your profile url, e.g. https://twitter.com/user_name
@@ -55,7 +55,7 @@ author:
 
 ## => GitHub Repository (if the site is hosted by GitHub)
 ##############################
-repository: user_name/repo_name
+repository: ucsdwcsng/ucsdwcsng.github.io
 repository_tree: master
 
 
@@ -181,7 +181,8 @@ analytics:
 ##############################
 markdown    : kramdown
 highlighter : rouge
-permalink   : date
+permalink   : /:title/
+# permalink   : none
 
 exclude:
   - CHANGELOG.md
@@ -203,6 +204,14 @@ exclude:
 
 defaults:
   - scope:
+      path: "assets"
+    values:
+      sitemap: false
+  - scope:
+      path: "google7a0c35a6b1227dc3.html"
+    values:
+      sitemap: false
+  - scope:
       path: ""
       type: posts
     values:
@@ -221,5 +230,11 @@ defaults:
 plugins:
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-redirect-from
   - jekyll-sitemap
   - jemoji
+
+## => Extra stuff for publications
+miscs:
+  - content_type: # type
+  - content_url: # link
