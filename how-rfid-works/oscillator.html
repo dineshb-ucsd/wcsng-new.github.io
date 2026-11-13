@@ -1,0 +1,37 @@
+---
+layout: page
+title: "Crystal Oscillator | How RFID Works"
+seo_title: "Crystal Oscillator | How RFID Works"
+seo_description: "Generates a stable reference frequency (~10–20 MHz) that everything else locks to."
+permalink: /how-rfid-works/oscillator/
+rfid_chapter: oscillator
+cover: /assets/gif/how-rfid-works/oscillator.png
+show_title: false
+---
+{% include how-rfid-works/chapter-head.html %}
+
+<div class="rfid-info">
+<div class="rfid-box">
+<h3>What it is physically</h3>
+<p>A small quartz crystal (a few mm) cut to vibrate at a precise frequency — typically <span class="rfid-hl">10–20 MHz</span> for RFID readers. The crystal is in a hermetically sealed metal can on the reader's PCB.</p>
+</div>
+<div class="rfid-box">
+<h3>What it does</h3>
+<p>The crystal's piezoelectric resonance produces an extremely stable sine wave. Stability: <span class="rfid-hl">±20 ppm</span> — that's ±20 Hz per MHz, so at 20 MHz it drifts less than ±400 Hz. This reference clock is what the PLL synthesizer (next step) multiplies up to 915 MHz.</p>
+</div>
+<div class="rfid-box">
+<h3>Why it matters</h3>
+<ul>
+<li>Without a stable reference, the carrier frequency would drift and land on someone else's channel</li>
+<li>Phase-based sensing and localization need the reader's frequency to be rock-solid — any drift shows up as a phase change that looks like real data</li>
+<li>The FCC requires ±10 ppm accuracy for UHF RFID</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Signal at this point</h3>
+<p><span class="rfid-sig">Input:</span> Nothing — this is the source.</p>
+<p><span class="rfid-sig">Output:</span> Clean sine wave at ~10–20 MHz, a few hundred mV amplitude. Very low power (µW). This feeds the PLL.</p>
+</div>
+</div>
+
+{% include how-rfid-works/chapter-foot.html %}

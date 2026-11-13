@@ -31,6 +31,8 @@ miscs:  # whatever you need to add Extra
       content_url:  https://dl.acm.org/doi/10.1145/3715014.3724364
     - content_type: Poster
       content_url:  /files/sigar_poster.pdf
+    - content_type: How RFID Works (Animated Explainer)
+      content_url:  /how-rfid-works/
     
 description: # all combinations are possible: (title+text+image, title+image, text+image etc), things will be populated in orders
     - title: Winner of Best Demo - Runner Up at SenSys 2025

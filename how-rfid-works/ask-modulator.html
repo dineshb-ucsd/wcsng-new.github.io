@@ -1,0 +1,38 @@
+---
+layout: page
+title: "ASK Modulator | How RFID Works"
+seo_title: "ASK Modulator | How RFID Works"
+seo_description: "Reader encodes commands by briefly dropping the CW power. PIE encoding."
+permalink: /how-rfid-works/ask-modulator/
+rfid_chapter: ask-modulator
+cover: /assets/gif/how-rfid-works/ask-modulator.png
+show_title: false
+---
+{% include how-rfid-works/chapter-head.html %}
+
+<div class="rfid-info">
+<div class="rfid-box">
+<h3>What it is physically</h3>
+<p>Not a separate component — the reader's baseband processor controls the PA's <span class="rfid-hl">output power level</span>. A DAC or a switch on the PA bias reduces the carrier amplitude during command transmission. The modulation happens inside the PA stage or via a dedicated mixer before it.</p>
+</div>
+<div class="rfid-box">
+<h3>What it does</h3>
+<p>The reader encodes commands using <span class="rfid-hl">PIE (Pulse Interval Encoding)</span>. The carrier is normally at full power. To send a bit, the reader drops the power briefly. A <span class="rfid-hl">short dip = data-0</span> (~1×Tari ≈ 25 µs). A <span class="rfid-hl">long dip = data-1</span> (~1.5–2×Tari ≈ 37–50 µs). The tag sees these power dips as VDD sags on its charge pump output.</p>
+</div>
+<div class="rfid-box">
+<h3>Why it matters</h3>
+<ul>
+<li>This is how ALL commands reach the tag — Query, ACK, Read, Write.</li>
+<li>Deep modulation (100% ASK, full power drop) maximizes the tag's ability to detect bits but disrupts the tag's power supply.</li>
+<li>PR-ASK (phase-reversal ASK) drops to ~50% — the tag stays powered during the dips.</li>
+<li>The tag has no other way to receive data. It literally watches its power supply fluctuate.</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Signal at this point</h3>
+<p><span class="rfid-sig">Input:</span> Pure 915 MHz CW + digital command bitstream.</p>
+<p><span class="rfid-sig">Output:</span> ASK-modulated 915 MHz carrier — the envelope carries the data bits in PIE encoding. Still +30 dBm average.</p>
+</div>
+</div>
+
+{% include how-rfid-works/chapter-foot.html %}

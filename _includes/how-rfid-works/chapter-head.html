@@ -1,0 +1,28 @@
+{%- comment -%}
+  Header for one "How RFID Works" chapter. The page sets `rfid_chapter: <slug>`;
+  everything else comes from _data/how_rfid_works.yml. Pair with chapter-foot.html,
+  which closes the .rfid wrapper opened here.
+{%- endcomment -%}
+{%- include how-rfid-works/style.html -%}
+{%- assign _rfid_chs = site.data.how_rfid_works.chapters -%}
+{%- for _c in _rfid_chs -%}
+  {%- if _c.slug == page.rfid_chapter -%}{%- assign _rfid_ch = _c -%}{%- endif -%}
+{%- endfor -%}
+{%- assign _rfid_media = '/assets/gif/how-rfid-works/' | append: _rfid_ch.slug | relative_url -%}
+<div class="rfid">
+  <nav class="rfid-crumbs" aria-label="Breadcrumb">
+    <a href="{{ '/how-rfid-works/' | relative_url }}">How RFID Works</a><span>/</span>{{ _rfid_ch.section_label }}
+  </nav>
+  <p class="rfid-eyebrow">
+    <span class="rfid-pill rfid-pill--{{ _rfid_ch.role }}">{{ _rfid_ch.section_label }}</span>
+    Chapter {{ _rfid_ch.num }} of {{ _rfid_chs.size }}
+  </p>
+  <h1 class="rfid-title">{{ _rfid_ch.title }}</h1>
+  <p class="rfid-sub">{{ _rfid_ch.subtitle }}</p>
+  <figure class="rfid-fig">
+    <picture>
+      <source media="(prefers-reduced-motion: reduce)" srcset="{{ _rfid_media }}.png">
+      <img src="{{ _rfid_media }}.gif" width="{{ _rfid_ch.width }}" height="{{ _rfid_ch.height }}"
+           alt="Animated diagram of the {{ _rfid_ch.title }}: {{ _rfid_ch.subtitle }}">
+    </picture>
+  </figure>

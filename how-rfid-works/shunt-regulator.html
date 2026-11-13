@@ -1,0 +1,37 @@
+---
+layout: page
+title: "Shunt Regulator / Voltage Limiter | How RFID Works"
+seo_title: "Shunt Regulator / Voltage Limiter | How RFID Works"
+seo_description: "Clamps VDD below 1.8V when tag is too close to reader. Protects the chip."
+permalink: /how-rfid-works/shunt-regulator/
+rfid_chapter: shunt-regulator
+cover: /assets/gif/how-rfid-works/shunt-regulator.png
+show_title: false
+---
+{% include how-rfid-works/chapter-head.html %}
+
+<div class="rfid-info">
+<div class="rfid-box">
+<h3>What it is physically</h3>
+<p>A large <span class="rfid-hl">NMOS transistor</span> whose gate is connected to a bandgap or diode-stack voltage reference (~1.8 V). When VDD exceeds this threshold, the MOSFET turns on and shunts excess current from VDD to ground, dissipating the energy as heat.</p>
+</div>
+<div class="rfid-box">
+<h3>What it does</h3>
+<p>Clamps VDD at <span class="rfid-hl">~1.8 V</span> regardless of how much RF power the antenna delivers. At 10 cm from a 1 W reader the tag might receive +10 dBm — without the shunt, VDD would spike to 3–4 V and destroy the thin oxide gates. The shunt absorbs all that excess energy.</p>
+</div>
+<div class="rfid-box">
+<h3>Why it matters</h3>
+<ul>
+<li>Without it, bringing the reader close to the tag fries the chip</li>
+<li>The shunt <span class="rfid-hl">changes the chip's input impedance</span> at high power — at close range the antenna is loaded more heavily, which affects the reflection coefficient (and thus the backscatter phase the reader measures)</li>
+<li>This is one reason RFID sensors often compare the phase of two tag ICs sharing one antenna: both chips' shunts activate similarly, so the effect cancels in the difference</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Signal at this point</h3>
+<p><span class="rfid-sig">Input:</span> VDD from charge pump (could be 0.5 V to 4+ V depending on distance).</p>
+<p><span class="rfid-sig">Output:</span> VDD clamped at ≤ 1.8 V. Excess current shunted to GND.</p>
+</div>
+</div>
+
+{% include how-rfid-works/chapter-foot.html %}

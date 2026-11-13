@@ -1,0 +1,77 @@
+---
+layout: page
+title: "Anti-Collision (LFSR / Slot Counter) | How RFID Works"
+seo_title: "Anti-Collision (LFSR / Slot Counter) | How RFID Works"
+seo_description: "Random number generator picks a slot so multiple tags don't talk at once."
+permalink: /how-rfid-works/anticollision/
+rfid_chapter: anticollision
+cover: /assets/gif/how-rfid-works/anticollision.png
+show_title: false
+---
+{% include how-rfid-works/chapter-head.html %}
+
+<div class="rfid-info">
+<div class="rfid-box">
+<h3>What it is physically</h3>
+<p>A <span class="rfid-hl">16-bit linear feedback shift register (LFSR)</span> on the tag die — roughly 50 flip-flops and a few XOR gates. Combined with a down-counter register that tracks the tag's current slot number. Total silicon area is negligible compared to the rest of the digital logic.</p>
+<p>The LFSR is seeded from a combination of the tag's TID (factory-unique) and thermal noise from a small on-die circuit, so each tag's random sequence is different even if they power up at the same instant.</p>
+</div>
+<div class="rfid-box">
+<h3>What it does</h3>
+<p>Implements <span class="rfid-hl">Slotted ALOHA</span> anti-collision. When the reader sends a <code>Query</code> command with parameter Q, the tag:</p>
+<ul>
+<li>Generates a random number R from the LFSR</li>
+<li>Sets its slot counter to R mod 2<sup>Q</sup> (so 0 to 2<sup>Q</sup>−1)</li>
+<li>If counter = 0, responds immediately with a 16-bit random number (RN16)</li>
+<li>If counter > 0, stays silent and waits</li>
+<li>On each <code>QueryRep</code>, decrements the counter by 1. Responds when it hits 0.</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>The full inventory round</h3>
+<p>The complete handshake for identifying one tag:</p>
+<ul>
+<li><span class="rfid-sig">Reader → Tag:</span> <code>Query(Q=2)</code> — start a round with 4 slots</li>
+<li><span class="rfid-sig">Tag → Reader:</span> <code>RN16</code> — 16-bit random nonce (only if slot counter = 0)</li>
+<li><span class="rfid-sig">Reader → Tag:</span> <code>ACK(RN16)</code> — echoes the nonce back to confirm</li>
+<li><span class="rfid-sig">Tag → Reader:</span> <code>EPC + PC + CRC-16</code> — the tag's full identity</li>
+<li><span class="rfid-sig">Reader → Tag:</span> <code>QueryRep</code> — advance to next slot, repeat</li>
+</ul>
+<p>The RN16 handshake prevents a tag from sending its full EPC into a collision — the short nonce is cheaper to lose.</p>
+</div>
+<div class="rfid-box">
+<h3>Why it matters</h3>
+<ul>
+<li>Without anti-collision, two tags responding simultaneously produce garbled data — the reader can't decode either one</li>
+<li>Q is adaptive: reader starts with a guess (e.g. Q=4 for ~16 expected tags), increases Q if too many collisions, decreases if too many empty slots</li>
+<li>Theoretical throughput: ~36.8% of slots produce a clean read (1/e, the Poisson limit of slotted ALOHA)</li>
+<li>In practice, a good reader inventories ~400-1000 tags per second</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Typical parameter values</h3>
+<ul>
+<li><span class="rfid-hl">Q range:</span> 0 to 15 (1 to 32768 slots)</li>
+<li><span class="rfid-hl">Q=0:</span> 1 slot — use when you know there's exactly 1 tag (fastest)</li>
+<li><span class="rfid-hl">Q=4:</span> 16 slots — good default for ~10-20 tags</li>
+<li><span class="rfid-hl">RN16 length:</span> 16 bits — collision probability on nonce alone is 1/65536</li>
+<li><span class="rfid-hl">Slot duration:</span> ~3-5 ms depending on data rate and EPC length</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Design tradeoffs</h3>
+<ul>
+<li><b>Q too low:</b> many collisions, wasted time re-reading. But each round is short.</li>
+<li><b>Q too high:</b> many empty slots, wasted time listening to silence. But few collisions.</li>
+<li><b>Optimal Q ≈ log<sub>2</sub>(N)</b> where N is the number of tags. Reader adapts dynamically.</li>
+<li>The LFSR must be unpredictable enough that two tags from the same batch don't pick correlated slots — manufacturing variation in the seed source matters.</li>
+</ul>
+</div>
+<div class="rfid-box rfid-box--full">
+<h3>Signal flow</h3>
+<p><span class="rfid-sig">Input:</span> Decoded <code>Query</code> command with Q parameter, and <code>QueryRep</code> commands from the envelope detector → state machine. Also the LFSR's internal state (pseudo-random).</p>
+<p><span class="rfid-sig">Output:</span> A go/no-go signal to the response logic. When the slot counter reaches 0, the state machine transitions to the Reply state and begins clocking out the RN16 (and later the EPC after ACK) through the FM0 encoder to the backscatter modulator.</p>
+</div>
+</div>
+
+{% include how-rfid-works/chapter-foot.html %}

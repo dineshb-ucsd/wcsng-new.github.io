@@ -1,0 +1,72 @@
+---
+layout: page
+title: "IQ Mixer (Demodulator) | How RFID Works"
+seo_title: "IQ Mixer (Demodulator) | How RFID Works"
+seo_description: "Multiplies received signal by carrier and 90°-shifted copy → I and Q baseband channels."
+permalink: /how-rfid-works/iq-mixer/
+rfid_chapter: iq-mixer
+cover: /assets/gif/how-rfid-works/iq-mixer.png
+show_title: false
+---
+{% include how-rfid-works/chapter-head.html %}
+
+<div class="rfid-info">
+<div class="rfid-box">
+<h3>What it is physically</h3>
+<p>Two analog mixer ICs (or a single integrated IQ demodulator chip like the ADL5380) on the reader's PCB. Each mixer is a <span class="rfid-hl">Gilbert cell</span> — a differential pair of transistors that multiplies two signals together. One mixer gets the LO (local oscillator) signal directly (in-phase = I); the other gets it through a <span class="rfid-hl">90° hybrid coupler</span> (quadrature = Q). After each mixer, a low-pass filter (RC or active) strips out the 2ω component.</p>
+<p>The LO comes from the same PLL synthesizer that drives the transmitter — this is a <span class="rfid-hl">homodyne (zero-IF) receiver</span>. The reader transmits and receives on the same frequency simultaneously.</p>
+</div>
+<div class="rfid-box">
+<h3>What it does — the math</h3>
+<p>The received signal is the reader's own CW reflected back, modulated by the tag's switching:</p>
+<p style="margin:8px 0">r(t) = A·cos(ωt + φ(t))</p>
+<p>where φ(t) toggles between two values as the MOSFET switches. The I mixer multiplies by cos(ωt):</p>
+<p style="margin:8px 0">I = LPF{ A·cos(ωt+φ)·cos(ωt) } = (A/2)·cos(φ)</p>
+<p>The Q mixer multiplies by sin(ωt):</p>
+<p style="margin:8px 0">Q = LPF{ A·cos(ωt+φ)·sin(ωt) } = (A/2)·sin(φ)</p>
+<p>The 2ω terms are killed by the LPF. What remains is a <span class="rfid-hl">baseband signal</span> that preserves both the amplitude A and phase φ of the reflection.</p>
+</div>
+<div class="rfid-box">
+<h3>Why two channels (I AND Q)?</h3>
+<ul>
+<li>A single mixer gives cos(φ) — but cos(+30°) = cos(−30°), so you can't tell the sign of the phase</li>
+<li>With both I = cos(φ) and Q = sin(φ), you can compute φ = arctan2(Q, I) unambiguously over the full 360°</li>
+<li>Together, I and Q form a <span class="rfid-hl">complex baseband signal: I + jQ = (A/2)·e<sup>jφ</sup></span></li>
+<li>The magnitude √(I²+Q²) gives the amplitude (RSSI); the angle gives the phase</li>
+<li>For phase-based sensing, the phase is the measurement — losing the sign would lose half the dynamic range</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Why it matters</h3>
+<ul>
+<li>The backscatter signal is <span class="rfid-hl">−60 to −80 dBm</span> — a billion times weaker than the transmitted +30 dBm. The circulator provides ~20 dB isolation, but the receiver still has to dig the signal out of TX leakage.</li>
+<li>The mixer converts the tiny RF modulation directly to baseband (kHz), where it can be filtered, amplified, and digitized easily</li>
+<li>Homodyne architecture is simple and cheap (no separate LO frequency), which is why RFID readers are affordable</li>
+<li>The tradeoff: DC offset from TX leakage must be cancelled (the circulator's 20 dB isolation isn't infinite)</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Constellation diagram</h3>
+<p>If you plot I vs Q, the backscatter from one tag traces <span class="rfid-hl">two points</span> — one for each MOSFET state (Γ₁ and Γ₂). The data hops between these points at the FM0 rate. The vector between them is the modulated signal; their midpoint is the structural return.</p>
+<p>For a sensing tag: a change in the tag's load impedance rotates Γ₁ on the constellation, which rotates the midpoint → the phase shifts. Γ₂ (short) stays roughly the same. The reader measures the angle of the midpoint.</p>
+</div>
+<div class="rfid-box">
+<h3>Typical component values</h3>
+<ul>
+<li><span class="rfid-hl">Mixer:</span> ADL5380 or similar IQ demodulator, 700–2700 MHz range</li>
+<li><span class="rfid-hl">LO power:</span> ~0 dBm from the synthesizer (buffered)</li>
+<li><span class="rfid-hl">90° coupler:</span> Microstrip branchline or lumped LC at 915 MHz</li>
+<li><span class="rfid-hl">LPF bandwidth:</span> ~1 MHz (passes BLF, kills 2ω at 1.83 GHz)</li>
+<li><span class="rfid-hl">ADC:</span> 12–16 bit, ~2–5 MSPS, samples both I and Q</li>
+<li><span class="rfid-hl">Noise figure:</span> ~8–12 dB (reader NF, dominated by circulator leakage)</li>
+</ul>
+</div>
+<div class="rfid-box rfid-box--full">
+<h3>Signal flow</h3>
+<p><span class="rfid-sig">Input:</span> 915 MHz RF signal from the circulator's port 3 (the receive port). This contains: TX leakage (~+10 dBm), environmental reflections, and the tiny backscatter from tags (~−70 dBm).</p>
+<p><span class="rfid-sig">LO Input:</span> 915 MHz CW from the PLL synthesizer, split into 0° (I path) and 90° (Q path).</p>
+<p><span class="rfid-sig">Output:</span> Two baseband analog signals, I(t) and Q(t), each containing the FM0-modulated backscatter data at kHz frequencies. These are digitized by ADCs and processed by the reader's DSP/FPGA to extract the EPC, RSSI, and phase per tag.</p>
+</div>
+</div>
+
+{% include how-rfid-works/chapter-foot.html %}

@@ -1,0 +1,38 @@
+---
+layout: page
+title: "Ring Oscillator (Clock) | How RFID Works"
+seo_title: "Ring Oscillator (Clock) | How RFID Works"
+seo_description: "5–11 inverters in a loop. ~1.5 MHz. No crystal — drifts with voltage and temperature."
+permalink: /how-rfid-works/clock/
+rfid_chapter: clock
+cover: /assets/gif/how-rfid-works/clock.png
+show_title: false
+---
+{% include how-rfid-works/chapter-head.html %}
+
+<div class="rfid-info">
+<div class="rfid-box">
+<h3>What it is physically</h3>
+<p>An <span class="rfid-hl">odd number of inverter gates</span> (typically 7–11) connected in a ring: the output of the last feeds the input of the first. Each inverter is just a CMOS pair (one PMOS, one NMOS) — maybe 20 transistors total for the whole oscillator.</p>
+</div>
+<div class="rfid-box">
+<h3>What it does</h3>
+<p>The ring of inverters creates a signal that propagates around the loop and inverts each time. After going all the way around (odd number = net inversion), it contradicts itself and toggles. Period = <span class="rfid-hl">2 × N × t_delay</span>. With N=7 and t_delay ≈ 50 ns, frequency ≈ 1.4 MHz. This is the tag's system clock.</p>
+</div>
+<div class="rfid-box">
+<h3>Why it matters</h3>
+<ul>
+<li>A crystal oscillator would cost more than the entire tag IC — this costs nothing</li>
+<li>The frequency drifts ±30% with voltage, temperature, and process corners</li>
+<li>This is why Gen2 specifies loose timing tolerances (BLF 40–640 kHz) — the tag can't keep precise time</li>
+<li>The clock drives the state machine, the FM0 encoder, and all digital timing</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Signal at this point</h3>
+<p><span class="rfid-sig">Input:</span> VDD (determines speed) — no external signal.</p>
+<p><span class="rfid-sig">Output:</span> ~1–2 MHz square-ish clock. Edges are soft (RC-limited). Duty cycle roughly 50%.</p>
+</div>
+</div>
+
+{% include how-rfid-works/chapter-foot.html %}

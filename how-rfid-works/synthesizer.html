@@ -1,0 +1,37 @@
+---
+layout: page
+title: "PLL Frequency Synthesizer | How RFID Works"
+seo_title: "PLL Frequency Synthesizer | How RFID Works"
+seo_description: "Multiplies the reference up to exactly 915 MHz. Phase-locked loop keeps it dead-on."
+permalink: /how-rfid-works/synthesizer/
+rfid_chapter: synthesizer
+cover: /assets/gif/how-rfid-works/synthesizer.png
+show_title: false
+---
+{% include how-rfid-works/chapter-head.html %}
+
+<div class="rfid-info">
+<div class="rfid-box">
+<h3>What it is physically</h3>
+<p>An IC on the reader PCB (e.g. ADF4350 or similar). Contains a <span class="rfid-hl">phase-frequency detector</span>, a <span class="rfid-hl">charge pump</span>, and a <span class="rfid-hl">voltage-controlled oscillator (VCO)</span>. An external loop filter (a few R-C components) sits between the charge pump and VCO.</p>
+</div>
+<div class="rfid-box">
+<h3>What it does</h3>
+<p>The VCO produces ~915 MHz. A frequency divider (÷N, where N ≈ 45) divides this down to ~20 MHz. The phase detector compares this divided signal to the crystal reference. Any phase error pumps charge into the loop filter, which tunes the VCO until the phases match. Result: <span class="rfid-hl">f_out = N × f_ref = 45 × 20.333 MHz = 915 MHz</span>, locked to crystal accuracy.</p>
+</div>
+<div class="rfid-box">
+<h3>Why it matters</h3>
+<ul>
+<li>RFID readers frequency-hop across 50 channels (902–928 MHz). The PLL retunes in microseconds to each channel.</li>
+<li>The PLL's phase noise becomes the reader's phase noise floor — phase-based RFID sensing needs this to be low.</li>
+<li>Without a PLL, you'd need a 915 MHz crystal (impractical — crystals don't go that high).</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Signal at this point</h3>
+<p><span class="rfid-sig">Input:</span> 20 MHz reference from crystal, ~300 mV.</p>
+<p><span class="rfid-sig">Output:</span> 915 MHz sine wave, ~0 dBm (1 mW). Frequency accuracy inherited from crystal (±20 ppm → ±18 kHz at 915 MHz).</p>
+</div>
+</div>
+
+{% include how-rfid-works/chapter-foot.html %}

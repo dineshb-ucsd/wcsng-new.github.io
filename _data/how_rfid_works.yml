@@ -1,0 +1,213 @@
+# Generated from the RFID System Reference package; edit freely.
+# Order here drives the index page and the previous/next links.
+chapters:
+  - slug: oscillator
+    num: "01"
+    title: "Crystal Oscillator"
+    subtitle: "The stable reference that everything locks to"
+    blurb: "Generates a stable reference frequency (~10–20 MHz) that everything else locks to."
+    role: reader
+    section: reader-tx
+    section_label: "Reader · transmit"
+    width: 1000
+    height: 366
+  - slug: synthesizer
+    num: "02"
+    title: "PLL Frequency Synthesizer"
+    subtitle: "Multiplies the 20 MHz reference up to exactly 915 MHz"
+    blurb: "Multiplies the reference up to exactly 915 MHz. Phase-locked loop keeps it dead-on."
+    role: reader
+    section: reader-tx
+    section_label: "Reader · transmit"
+    width: 1000
+    height: 366
+  - slug: power-amp
+    num: "03"
+    title: "Power Amplifier"
+    subtitle: "Takes the tiny PLL output and boosts it to 1 Watt"
+    blurb: "Boosts the 915 MHz carrier from milliwatts to 1 Watt (+30 dBm)."
+    role: reader
+    section: reader-tx
+    section_label: "Reader · transmit"
+    width: 1000
+    height: 366
+  - slug: circulator
+    num: "04"
+    title: "Circulator"
+    subtitle: "Routes TX power to the antenna and reflections to the receiver — one-way traffic"
+    blurb: "3-port ferrite device: TX→antenna, antenna→RX. Keeps transmitter from blasting the receiver."
+    role: reader
+    section: reader-tx
+    section_label: "Reader · transmit"
+    width: 1000
+    height: 366
+  - slug: reader-antenna
+    num: "05"
+    title: "Reader Antenna"
+    subtitle: "Converts the electrical signal into an electromagnetic wave radiating into space"
+    blurb: "Converts electrical signal to electromagnetic wave radiating into space."
+    role: reader
+    section: reader-tx
+    section_label: "Reader · transmit"
+    width: 1000
+    height: 366
+  - slug: ask-modulator
+    num: "06"
+    title: "ASK Modulator"
+    subtitle: "Reader encodes commands by briefly dropping the carrier power"
+    blurb: "Reader encodes commands by briefly dropping the CW power. PIE encoding."
+    role: reader
+    section: reader-tx
+    section_label: "Reader · transmit"
+    width: 1000
+    height: 366
+  - slug: propagation
+    num: "07"
+    title: "Free-Space Propagation"
+    subtitle: "The wave loses power as it spreads — inverse-square law"
+    blurb: "CW travels at speed of light. Power falls as 1/d². At 1m: about −8.7 dBm."
+    role: air
+    section: air
+    section_label: "Free space"
+    width: 1000
+    height: 366
+  - slug: tag-antenna
+    num: "08"
+    title: "Tag Antenna + Matching"
+    subtitle: "Captures the EM wave and delivers ±200 mV to the chip pads"
+    blurb: "Dipole or loop, conjugate-matched to the chip's complex input impedance."
+    role: tag
+    section: tag-power
+    section_label: "Tag · power harvesting"
+    width: 1000
+    height: 366
+  - slug: charge-pump
+    num: "09"
+    title: "Charge Pump (Dickson Rectifier)"
+    subtitle: "Converting RF energy into DC power — this is ALL the power the tag gets"
+    blurb: "Ladder of diode-connected MOSFETs + caps. Converts ±200 mV RF to 1.2V DC."
+    role: tag
+    section: tag-power
+    section_label: "Tag · power harvesting"
+    width: 1000
+    height: 384
+  - slug: shunt-regulator
+    num: "10"
+    title: "Shunt Regulator / Voltage Limiter"
+    subtitle: "Protects the chip when the tag is too close to the reader"
+    blurb: "Clamps VDD below 1.8V when tag is too close to reader. Protects the chip."
+    role: tag
+    section: tag-power
+    section_label: "Tag · power harvesting"
+    width: 1000
+    height: 384
+  - slug: por
+    num: "11"
+    title: "Power-On Reset (POR)"
+    subtitle: "Holds the digital logic in reset until power is stable"
+    blurb: "Voltage comparator holds digital logic in reset until VDD is stable."
+    role: tag
+    section: tag-power
+    section_label: "Tag · power harvesting"
+    width: 1000
+    height: 366
+  - slug: envelope-detector
+    num: "12"
+    title: "Envelope Detector"
+    subtitle: "How the tag \"hears\" the reader's commands — by watching VDD dip"
+    blurb: "Peak detector on VDD rail. Reader drops power → VDD dips → that's a bit."
+    role: tag
+    section: tag-downlink
+    section_label: "Tag · downlink"
+    width: 1000
+    height: 384
+  - slug: clock
+    num: "13"
+    title: "Ring Oscillator (Clock)"
+    subtitle: "No crystal on the tag — just inverters in a loop, drifting but good enough"
+    blurb: "5–11 inverters in a loop. ~1.5 MHz. No crystal — drifts with voltage and temperature."
+    role: tag
+    section: tag-downlink
+    section_label: "Tag · downlink"
+    width: 1000
+    height: 366
+  - slug: state-machine
+    num: "14"
+    title: "Gen2 State Machine"
+    subtitle: "The tiny brain that speaks the EPC protocol — ~5000–15000 gates"
+    blurb: "~5000–15000 gates. Parses commands, manages anti-collision slots, orchestrates response."
+    role: tag
+    section: tag-protocol
+    section_label: "Tag · protocol engine"
+    width: 1000
+    height: 402
+  - slug: memory
+    num: "15"
+    title: "EEPROM / NVM Memory"
+    subtitle: "Where the tag's identity lives — 96 bits that say \"I am this tag\""
+    blurb: "96-bit EPC (writeable), 48-bit TID (factory-fused), user memory. This IS the tag's identity."
+    role: tag
+    section: tag-protocol
+    section_label: "Tag · protocol engine"
+    width: 1000
+    height: 384
+  - slug: anticollision
+    num: "16"
+    title: "Anti-Collision (LFSR / Slot Counter)"
+    subtitle: "How dozens of tags share the air without talking over each other"
+    blurb: "Random number generator picks a slot so multiple tags don't talk at once."
+    role: tag
+    section: tag-protocol
+    section_label: "Tag · protocol engine"
+    width: 1000
+    height: 457
+  - slug: fm0-encoder
+    num: "17"
+    title: "FM0 / Miller Line Encoder"
+    subtitle: "Turning data bits into a switching pattern for the backscatter modulator"
+    blurb: "Converts data bits into a switching pattern. Every bit boundary toggles; a '0' also toggles mid-bit."
+    role: tag
+    section: tag-protocol
+    section_label: "Tag · protocol engine"
+    width: 1000
+    height: 439
+  - slug: backscatter-mosfet
+    num: "18"
+    title: "Backscatter Modulator (THE MOSFET)"
+    subtitle: "THE key component: one MOSFET that puts data onto the reflected wave"
+    blurb: "One transistor across the antenna pads. Toggles impedance → toggles reflection. This is how data rides the wave."
+    role: tag
+    section: tag-uplink
+    section_label: "Tag · backscatter uplink"
+    width: 1000
+    height: 475
+  - slug: iq-mixer
+    num: "19"
+    title: "IQ Mixer (Demodulator)"
+    subtitle: "How the reader separates the backscatter from its own transmission"
+    blurb: "Multiplies received signal by carrier and 90°-shifted copy → I and Q baseband channels."
+    role: rx
+    section: reader-rx
+    section_label: "Reader · receive"
+    width: 1000
+    height: 457
+  - slug: phase-extraction
+    num: "20"
+    title: "Phase Extraction"
+    subtitle: "arctan2(Q, I) — turning two baseband signals into the angle that carries the sensor data"
+    blurb: "arctan(Q/I) = phase of the reflection: the number phase-based RFID sensing reads."
+    role: rx
+    section: reader-rx
+    section_label: "Reader · receive"
+    width: 1000
+    height: 439
+  - slug: bit-recovery
+    num: "21"
+    title: "FM0 Decoder / Bit Recovery"
+    subtitle: "Recovering the EPC bits from the noisy baseband signal"
+    blurb: "Correlator finds the preamble, then decodes FM0 transitions back into EPC bits."
+    role: rx
+    section: reader-rx
+    section_label: "Reader · receive"
+    width: 1000
+    height: 439

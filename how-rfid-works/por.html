@@ -1,0 +1,37 @@
+---
+layout: page
+title: "Power-On Reset (POR) | How RFID Works"
+seo_title: "Power-On Reset (POR) | How RFID Works"
+seo_description: "Voltage comparator holds digital logic in reset until VDD is stable."
+permalink: /how-rfid-works/por/
+rfid_chapter: por
+cover: /assets/gif/how-rfid-works/por.png
+show_title: false
+---
+{% include how-rfid-works/chapter-head.html %}
+
+<div class="rfid-info">
+<div class="rfid-box">
+<h3>What it is physically</h3>
+<p>A simple <span class="rfid-hl">voltage comparator</span> (or Schmitt trigger) that watches VDD. One input is tied to VDD through a resistive divider; the other to a fixed reference (~1.0 V). The output is a single digital signal: RESET_N (active low).</p>
+</div>
+<div class="rfid-box">
+<h3>What it does</h3>
+<p>When the reader first powers the tag, VDD ramps up from 0 V over ~10–100 µs as the charge pump fills its caps. During this ramp, the digital logic must NOT run — its flip-flops would latch random garbage. POR holds RESET_N = 0 (logic held in reset) until VDD crosses <span class="rfid-hl">~1.0 V</span>, then releases it. Hysteresis (~50 mV) prevents chattering if VDD wobbles near the threshold.</p>
+</div>
+<div class="rfid-box">
+<h3>Why it matters</h3>
+<ul>
+<li>Without POR, the state machine could start in an arbitrary state and send garbage backscatter</li>
+<li>On release, the state machine initializes to the "Ready" state per the Gen2 spec</li>
+<li>If the tag moves out of range and VDD drops, POR resets everything cleanly</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Signal at this point</h3>
+<p><span class="rfid-sig">Input:</span> VDD voltage (0 → ~1.2 V ramp).</p>
+<p><span class="rfid-sig">Output:</span> RESET_N: LOW while VDD &lt; 1.0 V (logic frozen), HIGH once VDD stable (logic runs).</p>
+</div>
+</div>
+
+{% include how-rfid-works/chapter-foot.html %}

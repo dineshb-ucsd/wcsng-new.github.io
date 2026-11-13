@@ -1,0 +1,79 @@
+---
+layout: page
+title: "FM0 Decoder / Bit Recovery | How RFID Works"
+seo_title: "FM0 Decoder / Bit Recovery | How RFID Works"
+seo_description: "Correlator finds the preamble, then decodes FM0 transitions back into EPC bits."
+permalink: /how-rfid-works/bit-recovery/
+rfid_chapter: bit-recovery
+cover: /assets/gif/how-rfid-works/bit-recovery.png
+show_title: false
+---
+{% include how-rfid-works/chapter-head.html %}
+
+<div class="rfid-info">
+<div class="rfid-box">
+<h3>What it is physically</h3>
+<p>Digital signal processing in the reader's <span class="rfid-hl">FPGA or DSP</span>. The Impinj R420 uses a Xilinx FPGA that runs the demodulator in real-time. The steps are: matched filter for preamble detection → clock recovery → bit-period sampling → FM0 decode → CRC check. All of this happens in ~100 µs per tag response.</p>
+<p>Some readers implement this in software on a host CPU via the sllurp library (Python), but for high tag rates (>100 tags/s) hardware acceleration is essential.</p>
+</div>
+<div class="rfid-box">
+<h3>What it does — step by step</h3>
+<ol style="padding-left:18px">
+<li style="margin-bottom:6px"><span class="rfid-hl">Preamble detection:</span> A correlator slides along the baseband signal looking for the FM0 preamble pattern (a specific sequence including a "violation" — a missing boundary transition that doesn't occur in normal FM0 data). This marks the start of the packet.</li>
+<li style="margin-bottom:6px"><span class="rfid-hl">Clock recovery:</span> The transitions in the preamble and early data establish the bit period (1/BLF). A PLL or early-late gate tracker locks onto the transition timing, even though the tag's oscillator drifts.</li>
+<li style="margin-bottom:6px"><span class="rfid-hl">Bit sampling:</span> At each bit boundary and mid-bit point, sample the signal level. A transition at the boundary is guaranteed; check for a transition at mid-bit.</li>
+<li style="margin-bottom:6px"><span class="rfid-hl">FM0 decode:</span> Mid-bit transition → data '0'. No mid-bit transition → data '1'. Accumulate bits.</li>
+<li style="margin-bottom:6px"><span class="rfid-hl">CRC-16 check:</span> The last 16 bits of the packet are a CRC-16/CCITT. Verify against the received data. If it fails → discard (bit error).</li>
+</ol>
+</div>
+<div class="rfid-box">
+<h3>The preamble — how to find the start</h3>
+<p>The FM0 preamble is specifically designed to be unique — it contains a "violation" of the FM0 encoding rule (a boundary WITHOUT a transition). This cannot occur in normal data, so finding it unambiguously marks the start of a packet:</p>
+<ul>
+<li>Preamble: <span class="rfid-hl">1,0,1,0,1,1,v</span> where 'v' is the violation</li>
+<li>The correlator looks for this exact pattern in the magnitude of the baseband signal</li>
+<li>False alarm probability is very low because the violation pattern cannot occur in data</li>
+<li>Once found, the bit clock is established from the known transition spacing in the preamble</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Noise and errors</h3>
+<ul>
+<li><span class="rfid-hl">BER target:</span> &lt; 10<sup>−4</sup> (fewer than 1 error per 10,000 bits). For a 128-bit packet, this means ~1.3% packet error rate.</li>
+<li><span class="rfid-hl">Noise sources:</span> thermal noise, TX leakage, environmental reflections, other tags' collisions, reader self-interference from frequency hopping</li>
+<li><span class="rfid-hl">Clock drift:</span> The tag's ring oscillator drifts ±10–20% with temperature and voltage. The reader's clock recovery must track this drift across the ~100 µs packet.</li>
+<li><span class="rfid-hl">Near-far problem:</span> A close tag with strong backscatter can drown out a distant tag. The reader uses power control and session flags to manage this.</li>
+<li><span class="rfid-hl">CRC catches errors:</span> If any bit is wrong, the CRC-16 will (almost certainly) fail, and the packet is discarded. The reader retries in the next round.</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Packet structure (what comes after the preamble)</h3>
+<ul>
+<li><span class="rfid-hl">RN16 response:</span> Preamble + 16-bit random number (32 symbols total)</li>
+<li><span class="rfid-hl">EPC response:</span> Preamble + PC (16 bits, protocol control) + EPC (96 bits typically) + CRC-16 (16 bits) = 144 data bits</li>
+<li>At BLF=250 kHz with FM0: 144 bits takes ~576 µs</li>
+<li>The reader must decode all of this correctly to identify the tag</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>How it connects to the output</h3>
+<p>Once the EPC bits are recovered and CRC-verified, the reader's host interface reports:</p>
+<ul>
+<li><span class="rfid-hl">EPC:</span> The tag's identity (e.g., "E200 3412 7856 0000 0000 0000")</li>
+<li><span class="rfid-hl">RSSI:</span> Received signal strength (from √(I²+Q²))</li>
+<li><span class="rfid-hl">Phase:</span> arctan2(Q,I) averaged over the packet (from page 20)</li>
+<li><span class="rfid-hl">Timestamp:</span> When this read occurred</li>
+<li><span class="rfid-hl">Antenna port:</span> Which reader antenna saw this tag</li>
+<li><span class="rfid-hl">Channel:</span> Which frequency channel (902–928 MHz)</li>
+</ul>
+<p>For a differential (two-IC) sensor tag, host software matches reads by EPC to tell IC A from IC B, then computes Δφ.</p>
+</div>
+<div class="rfid-box rfid-box--full">
+<h3>Signal flow</h3>
+<p><span class="rfid-sig">Input:</span> Digitized I(t) and Q(t) baseband samples. Contains FM0-modulated backscatter from the tag, buried in TX leakage and environmental noise.</p>
+<p><span class="rfid-sig">Processing:</span> Preamble correlation → clock recovery → bit-by-bit FM0 decode → accumulate into packet → CRC-16 verify.</p>
+<p><span class="rfid-sig">Output:</span> Verified EPC + metadata (RSSI, phase, timestamp, channel). Delivered to host via LLRP (Low Level Reader Protocol). A failed CRC produces nothing — the tag must be re-inventoried in the next round.</p>
+</div>
+</div>
+
+{% include how-rfid-works/chapter-foot.html %}

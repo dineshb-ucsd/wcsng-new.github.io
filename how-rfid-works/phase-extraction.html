@@ -1,0 +1,81 @@
+---
+layout: page
+title: "Phase Extraction | How RFID Works"
+seo_title: "Phase Extraction | How RFID Works"
+seo_description: "arctan(Q/I) = phase of the reflection: the number phase-based RFID sensing reads."
+permalink: /how-rfid-works/phase-extraction/
+rfid_chapter: phase-extraction
+cover: /assets/gif/how-rfid-works/phase-extraction.png
+show_title: false
+---
+{% include how-rfid-works/chapter-head.html %}
+
+<div class="rfid-info">
+<div class="rfid-box">
+<h3>What it is physically</h3>
+<p>Phase extraction is done in <span class="rfid-hl">digital signal processing</span> — either in the reader's FPGA or in its host software. The ADCs sample I(t) and Q(t) at ~2–5 MSPS. A CORDIC algorithm or lookup table computes arctan2(Q, I) per sample. The reader then averages the phase over each tag response (the ~100 µs EPC packet) to get one phase value per read.</p>
+<p>In Impinj readers (widely used in RFID research), the firmware reports the phase as a 12-bit value (0–4095 mapping to 0°–360°) along with the EPC and RSSI for every tag inventory event. The sllurp library reads this via the LLRP protocol.</p>
+</div>
+<div class="rfid-box">
+<h3>What it does — the computation</h3>
+<p>From the IQ mixer outputs:</p>
+<ul>
+<li><span class="rfid-hl">I = (A/2)·cos(φ)</span> — the in-phase component</li>
+<li><span class="rfid-hl">Q = (A/2)·sin(φ)</span> — the quadrature component</li>
+<li><span class="rfid-hl">φ = arctan2(Q, I)</span> — the full 360° phase angle</li>
+<li><span class="rfid-hl">A = 2·√(I² + Q²)</span> — the amplitude (RSSI)</li>
+</ul>
+<p>arctan2 is the two-argument arctangent that resolves all four quadrants. It returns the angle of the complex number I + jQ on the unit circle, measured counterclockwise from the positive I axis.</p>
+</div>
+<div class="rfid-box">
+<h3>What's in the measured phase</h3>
+<p>The reported phase φ contains EVERYTHING in the signal path:</p>
+<ul>
+<li><span class="rfid-hl">Propagation delay:</span> 2×distance × 2π/λ (round trip). At 915 MHz, λ = 32.7 cm, so 360° per 16.4 cm of distance change.</li>
+<li><span class="rfid-hl">Reader TX/RX phase offset:</span> fixed for a given reader and frequency channel.</li>
+<li><span class="rfid-hl">Antenna phase:</span> the antenna's own phase response.</li>
+<li><span class="rfid-hl">Tag reflection phase:</span> depends on the load impedance → <span class="rfid-hl">THIS is what carries the sensor data</span>.</li>
+<li><span class="rfid-hl">Multipath:</span> reflections from walls, floor, body add random phase errors.</li>
+<li><span class="rfid-hl">Frequency hopping:</span> each channel has a different propagation phase.</li>
+</ul>
+<p>A differential design cancels all of these EXCEPT the sensor by differencing two tag ICs (A and B) that share the same antenna, same path, same reader offset, same multipath.</p>
+</div>
+<div class="rfid-box">
+<h3>Why differential phase matters</h3>
+<ul>
+<li>A single tag's phase is nearly useless for sensing — multipath alone can swing it by tens of degrees as people or objects move</li>
+<li>Δφ = φ_A − φ_B <span class="rfid-hl">cancels all common-mode terms</span>, leaving only the sensor-dependent part of φ_A</li>
+<li>The sensor's impedance change shifts IC A's reflection phase; the size of that shift is the signal</li>
+<li>The ratio of that shift to the residual phase noise sets the sensing resolution</li>
+<li>Averaging many reads per tag brings the noise down further, at the cost of latency</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Phase on the Smith chart</h3>
+<p>The tag's reflection coefficient Γ is a complex number. On the Smith chart (normalized impedance plane), Γ's angle is directly related to the measured phase. When a capacitive sensor across the tag's port changes value:</p>
+<ul>
+<li>The load impedance Z₁ moves along a constant-conductance circle on the Smith chart</li>
+<li>Γ₁ rotates — its angle changes</li>
+<li>The reader sees this as a phase shift in the structural return</li>
+<li>The relationship is approximately linear over the small range of capacitance change</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Typical values and precision</h3>
+<ul>
+<li><span class="rfid-hl">Phase resolution:</span> 12-bit (0.088° per LSB) in Impinj readers</li>
+<li><span class="rfid-hl">Single-read phase noise:</span> ~2° RMS at 1m with no motion</li>
+<li><span class="rfid-hl">After 60s averaging (2000 reads):</span> ~0.5° (theoretical √N improvement)</li>
+<li><span class="rfid-hl">Phase ambiguity:</span> wraps at 180° (the reader can't resolve 180° ambiguity from a single channel). Continuity across reads resolves this.</li>
+<li><span class="rfid-hl">Frequency dependence:</span> each 500 kHz channel gives a slightly different phase (used for RFID localization; a differential Δφ largely cancels it)</li>
+</ul>
+</div>
+<div class="rfid-box rfid-box--full">
+<h3>Signal flow</h3>
+<p><span class="rfid-sig">Input:</span> Digitized I(t) and Q(t) baseband samples from the ADCs (12-16 bit, 2-5 MSPS).</p>
+<p><span class="rfid-sig">Processing:</span> CORDIC or arctan2 lookup per sample. Average over the tag's response packet. Per-channel calibration offset subtracted. Report alongside EPC and RSSI.</p>
+<p><span class="rfid-sig">Output:</span> One phase value (0°–360°) per tag per inventory round. For a differential sensor, φ_A and φ_B are reported separately (different EPCs); host software computes Δφ = φ_A − φ_B and applies a calibration curve to recover the sensed quantity.</p>
+</div>
+</div>
+
+{% include how-rfid-works/chapter-foot.html %}

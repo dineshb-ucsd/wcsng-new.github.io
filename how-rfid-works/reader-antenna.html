@@ -1,0 +1,37 @@
+---
+layout: page
+title: "Reader Antenna | How RFID Works"
+seo_title: "Reader Antenna | How RFID Works"
+seo_description: "Converts electrical signal to electromagnetic wave radiating into space."
+permalink: /how-rfid-works/reader-antenna/
+rfid_chapter: reader-antenna
+cover: /assets/gif/how-rfid-works/reader-antenna.png
+show_title: false
+---
+{% include how-rfid-works/chapter-head.html %}
+
+<div class="rfid-info">
+<div class="rfid-box">
+<h3>What it is physically</h3>
+<p>Typically a <span class="rfid-hl">circularly-polarized patch antenna</span> — a flat panel about 25 cm × 25 cm. It's a copper patch on a ground plane separated by a dielectric. A coaxial or microstrip feedline carries the signal from the circulator to the patch. Circular polarization means it works regardless of tag orientation.</p>
+</div>
+<div class="rfid-box">
+<h3>What it does</h3>
+<p>The patch acts as a resonant cavity at 915 MHz. Currents on the patch create fringing fields at the edges, which radiate. The antenna has <span class="rfid-hl">~6 dBi gain</span> — it focuses power into a forward-directed beam rather than radiating equally in all directions. With 1W input, the EIRP is about 4W.</p>
+</div>
+<div class="rfid-box">
+<h3>Why it matters</h3>
+<ul>
+<li>Antenna gain directly extends read range — every 3 dB of gain adds ~40% more distance.</li>
+<li>Circular polarization avoids orientation-dependent nulls, at the cost of 3 dB compared to a perfectly aligned linear tag.</li>
+<li>The antenna pattern determines the read zone — too narrow misses tags, too wide wastes power.</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Signal at this point</h3>
+<p><span class="rfid-sig">Input:</span> ~1W at 50Ω coaxial, guided wave.</p>
+<p><span class="rfid-sig">Output:</span> Electromagnetic wave in free space, EIRP ≈ 4W (+36 dBm). The signal is no longer in a wire — it's a propagating E and H field.</p>
+</div>
+</div>
+
+{% include how-rfid-works/chapter-foot.html %}

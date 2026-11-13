@@ -1,0 +1,39 @@
+---
+layout: page
+title: "Circulator | How RFID Works"
+seo_title: "Circulator | How RFID Works"
+seo_description: "3-port ferrite device: TX→antenna, antenna→RX. Keeps transmitter from blasting the receiver."
+permalink: /how-rfid-works/circulator/
+rfid_chapter: circulator
+cover: /assets/gif/how-rfid-works/circulator.png
+show_title: false
+---
+{% include how-rfid-works/chapter-head.html %}
+
+<div class="rfid-info">
+<div class="rfid-box">
+<h3>What it is physically</h3>
+<p>A small ferrite disc (the size of a coin) with <span class="rfid-hl">three coaxial ports</span> arranged in a Y. A permanent magnet biases the ferrite. It's a passive component — no power needed. On the reader board, it sits between the PA output and the antenna connector.</p>
+</div>
+<div class="rfid-box">
+<h3>What it does</h3>
+<p>Signals can only travel <span class="rfid-hl">clockwise</span> through the three ports: Port 1 (TX) → Port 2 (Antenna) → Port 3 (RX). A signal entering Port 1 exits Port 2 with ~0.5 dB loss. A reflection entering Port 2 exits Port 3. Port 1→3 is <span class="rfid-hl">isolated by ~20 dB</span> — the TX cannot blast the sensitive receiver directly.</p>
+</div>
+<div class="rfid-box">
+<h3>Why it matters</h3>
+<ul>
+<li>The TX outputs 1 Watt. The backscatter signal is ~−60 dBm. That's a <span class="rfid-hl">90 dB difference</span>. The circulator provides the first 20 dB of isolation.</li>
+<li>Without it, the receiver would be completely overwhelmed by TX leakage.</li>
+<li>Additional TX-RX isolation comes from the IQ mixer's balance and digital cancellation.</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Signal at this point</h3>
+<p><span class="rfid-sig">Port 1 in:</span> +30 dBm CW from PA.</p>
+<p><span class="rfid-sig">Port 2 out:</span> +29.5 dBm CW to antenna (0.5 dB insertion loss).</p>
+<p><span class="rfid-sig">Port 2 in:</span> Backscatter from tag, ~−60 dBm.</p>
+<p><span class="rfid-sig">Port 3 out:</span> Backscatter to receiver, ~−60.5 dBm, plus TX leakage at ~+10 dBm.</p>
+</div>
+</div>
+
+{% include how-rfid-works/chapter-foot.html %}

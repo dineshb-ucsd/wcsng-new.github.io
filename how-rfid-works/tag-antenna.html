@@ -1,0 +1,37 @@
+---
+layout: page
+title: "Tag Antenna + Matching | How RFID Works"
+seo_title: "Tag Antenna + Matching | How RFID Works"
+seo_description: "Dipole or loop, conjugate-matched to the chip's complex input impedance."
+permalink: /how-rfid-works/tag-antenna/
+rfid_chapter: tag-antenna
+cover: /assets/gif/how-rfid-works/tag-antenna.png
+show_title: false
+---
+{% include how-rfid-works/chapter-head.html %}
+
+<div class="rfid-info">
+<div class="rfid-box">
+<h3>What it is physically</h3>
+<p>A <span class="rfid-hl">meandered dipole</span> etched on a thin flex substrate (PET or polyimide). The arms are folded into a zigzag so a ~16 cm dipole fits in a ~4–8 cm label. An <span class="rfid-hl">inductive matching loop</span> near the feed point resonates out the chip's input capacitance (1.25 pF for Monza R6).</p>
+</div>
+<div class="rfid-box">
+<h3>What it does</h3>
+<p>The antenna is the transducer between free-space EM waves and the voltage/current that feeds the chip. It's designed for <span class="rfid-hl">conjugate matching</span> — the antenna's impedance is the complex conjugate of the chip's (1.56 kΩ ∥ 1.25 pF → antenna must look like ~1.56 kΩ in series with enough inductance to cancel 1.25 pF at 915 MHz). Maximum power transfer happens only at this match.</p>
+</div>
+<div class="rfid-box">
+<h3>Why it matters</h3>
+<ul>
+<li>A mismatch wastes received power. A 2:1 VSWR reflects 11% of the power — at threshold, that's the difference between working and not.</li>
+<li>On human skin, the body detunes the antenna (shifts its resonance down and absorbs power). Tags for wearables must be designed/simulated on a body phantom.</li>
+<li>Polarization mismatch between reader (circular) and tag (linear) costs 3 dB.</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Signal at this point</h3>
+<p><span class="rfid-sig">Input:</span> EM wave arriving at ≈ −10 dBm in free space. Tag antenna gain ≈ −10 dBi on skin.</p>
+<p><span class="rfid-sig">Output:</span> RF voltage swing of <span class="rfid-hl">±200 mV</span> across the two chip pads (RF+ and RF−). This is what the charge pump will rectify.</p>
+</div>
+</div>
+
+{% include how-rfid-works/chapter-foot.html %}

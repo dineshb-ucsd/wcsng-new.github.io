@@ -1,0 +1,20 @@
+{%- comment -%} Previous / next links for a chapter; closes the .rfid wrapper from chapter-head.html. {%- endcomment -%}
+{%- assign _rfid_chs = site.data.how_rfid_works.chapters -%}
+{%- assign _rfid_prev = nil -%}{%- assign _rfid_next = nil -%}
+{%- for _c in _rfid_chs -%}
+  {%- if _c.slug == page.rfid_chapter -%}
+    {%- assign _i = forloop.index0 -%}
+    {%- if _i > 0 -%}{%- assign _p = _i | minus: 1 -%}{%- assign _rfid_prev = _rfid_chs[_p] -%}{%- endif -%}
+    {%- assign _n = _i | plus: 1 -%}{%- assign _rfid_next = _rfid_chs[_n] -%}
+  {%- endif -%}
+{%- endfor -%}
+  <nav class="rfid-pager" aria-label="Chapters">
+    {%- if _rfid_prev -%}
+    <a class="rfid-pg rfid-pg--prev" href="{{ '/how-rfid-works/' | append: _rfid_prev.slug | append: '/' | relative_url }}"><small>&larr; Previous &middot; {{ _rfid_prev.num }}</small><strong>{{ _rfid_prev.title }}</strong></a>
+    {%- else -%}<span></span>{%- endif -%}
+    <a class="rfid-all" href="{{ '/how-rfid-works/' | relative_url }}">All chapters</a>
+    {%- if _rfid_next -%}
+    <a class="rfid-pg rfid-pg--next" href="{{ '/how-rfid-works/' | append: _rfid_next.slug | append: '/' | relative_url }}"><small>Next &middot; {{ _rfid_next.num }} &rarr;</small><strong>{{ _rfid_next.title }}</strong></a>
+    {%- else -%}<span></span>{%- endif -%}
+  </nav>
+</div>

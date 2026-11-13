@@ -1,0 +1,38 @@
+---
+layout: page
+title: "Charge Pump (Dickson Rectifier) | How RFID Works"
+seo_title: "Charge Pump (Dickson Rectifier) | How RFID Works"
+seo_description: "Ladder of diode-connected MOSFETs + caps. Converts ±200 mV RF to 1.2V DC."
+permalink: /how-rfid-works/charge-pump/
+rfid_chapter: charge-pump
+cover: /assets/gif/how-rfid-works/charge-pump.png
+show_title: false
+---
+{% include how-rfid-works/chapter-head.html %}
+
+<div class="rfid-info">
+<div class="rfid-box">
+<h3>What it is physically</h3>
+<p>A ladder of <span class="rfid-hl">4–6 stages</span>, each made of one diode-connected MOSFET and one MIM capacitor (~10–20 pF) on the chip die. Total area: a significant fraction of the ~0.5 mm² die. The MOSFETs have low threshold voltage (~200 mV) to rectify the small incoming RF swing.</p>
+</div>
+<div class="rfid-box">
+<h3>What it does</h3>
+<p>Each stage acts as a half-wave rectifier and voltage doubler. On one half-cycle the diode conducts and charges the cap; on the next half-cycle the cap boosts the voltage for the next stage. Each stage adds roughly <span class="rfid-hl">V_peak − V_diode_drop</span>. After 4–6 stages, ±200 mV RF becomes ~1.2 V DC.</p>
+</div>
+<div class="rfid-box">
+<h3>Why it matters</h3>
+<ul>
+<li>This is the tag's ONLY power source — there is no battery</li>
+<li>The minimum input power for VDD to reach ~1.0 V sets the tag's <span class="rfid-hl">sensitivity</span> (−20 dBm for Monza R6)</li>
+<li>Efficiency is ~20–30% — most RF energy is lost in the diode drops</li>
+<li>The charge pump's input impedance IS the chip's RF impedance that the antenna must match</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Signal at this point</h3>
+<p><span class="rfid-sig">Input:</span> RF voltage swing of ±200 mV at 915 MHz across the chip pads.</p>
+<p><span class="rfid-sig">Output:</span> ~1.2 V DC (VDD) with small ripple at 2×915 MHz. This powers the entire digital logic, memory, oscillator, and everything else on the chip.</p>
+</div>
+</div>
+
+{% include how-rfid-works/chapter-foot.html %}
