@@ -1,0 +1,37 @@
+---
+layout: page
+title: "Envelope Detector | How RFID Works"
+seo_title: "Envelope Detector | How RFID Works"
+seo_description: "Peak detector on VDD rail. Reader drops power → VDD dips → that's a bit."
+permalink: /how-rfid-works/envelope-detector/
+rfid_chapter: envelope-detector
+cover: /assets/gif/how-rfid-works/envelope-detector.png
+show_title: false
+---
+{% include how-rfid-works/chapter-head.html %}
+
+<div class="rfid-info">
+<div class="rfid-box">
+<h3>What it is physically</h3>
+<p>A <span class="rfid-hl">peak detector</span> (diode + RC filter) followed by a comparator. The diode charges a small cap to the peak of VDD; the comparator compares VDD to this slowly-decaying reference. When the reader drops power and VDD dips, the comparator output goes low — that's a bit.</p>
+</div>
+<div class="rfid-box">
+<h3>What it does</h3>
+<p>The reader sends commands by <span class="rfid-hl">ASK modulation</span> — briefly dropping its carrier power. From the tag's perspective, VDD (the charge pump output) sags when the carrier dips. The envelope detector converts these sags into a clean digital bitstream at <span class="rfid-hl">40–160 kbps</span>.</p>
+</div>
+<div class="rfid-box">
+<h3>Why it matters</h3>
+<ul>
+<li>This is the tag's ONLY way to receive commands from the reader</li>
+<li>The time constants must be tuned: fast enough to track the bit rate, slow enough to reject the 915 MHz RF ripple</li>
+<li>The Gen2 protocol uses PIE (Pulse Interval Encoding): short power drop = 0, long drop = 1</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Signal at this point</h3>
+<p><span class="rfid-sig">Input:</span> VDD with tiny dips (~50–200 mV) when reader drops power.</p>
+<p><span class="rfid-sig">Output:</span> Clean digital bitstream — the reader's command (Query, ACK, Read, etc.).</p>
+</div>
+</div>
+
+{% include how-rfid-works/chapter-foot.html %}

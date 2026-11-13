@@ -1,0 +1,68 @@
+---
+layout: page
+title: "FM0 / Miller Line Encoder | How RFID Works"
+seo_title: "FM0 / Miller Line Encoder | How RFID Works"
+seo_description: "Converts data bits into a switching pattern. Every bit boundary toggles; a '0' also toggles mid-bit."
+permalink: /how-rfid-works/fm0-encoder/
+rfid_chapter: fm0-encoder
+cover: /assets/gif/how-rfid-works/fm0-encoder.png
+show_title: false
+---
+{% include how-rfid-works/chapter-head.html %}
+
+<div class="rfid-info">
+<div class="rfid-box">
+<h3>What it is physically</h3>
+<p>A tiny block of combinational logic — perhaps <span class="rfid-hl">20–40 gates</span> — that takes a serial data bit and the current output state, and produces the next output state according to the FM0 (or Miller) encoding rules. It is clocked by the ring oscillator at the backscatter link frequency (BLF), which the reader specifies in its Query command.</p>
+<p>The output is a single digital wire that drives the gate of the backscatter MOSFET. High = MOSFET on = antenna shorted. Low = MOSFET off = normal impedance.</p>
+</div>
+<div class="rfid-box">
+<h3>What it does — FM0 rules</h3>
+<p>FM0 (also called "bi-phase space") has exactly two rules:</p>
+<ul>
+<li><span class="rfid-hl">Rule 1:</span> The output ALWAYS transitions (high→low or low→high) at every bit boundary.</li>
+<li><span class="rfid-hl">Rule 2:</span> For a data '0', there is an ADDITIONAL transition at the mid-bit point. For a data '1', there is NO mid-bit transition.</li>
+</ul>
+<p>So '1' = one level for the full bit period (but transitions at boundaries). '0' = level changes halfway through. This guarantees at least one transition per bit, which helps the receiver recover the clock.</p>
+</div>
+<div class="rfid-box">
+<h3>Miller encoding (alternative)</h3>
+<p>Miller encoding with subcarrier M is the alternative the reader can request for noisier environments:</p>
+<ul>
+<li><span class="rfid-hl">Miller-2:</span> Each bit is 2 subcarrier cycles. '1' has a phase inversion at mid-bit; '0' does not. Runs at half the data rate of FM0 for the same BLF.</li>
+<li><span class="rfid-hl">Miller-4, Miller-8:</span> 4 or 8 subcarrier cycles per bit. Even slower but much more robust to interference.</li>
+</ul>
+<p>The tradeoff: FM0 is fastest (highest throughput), Miller-8 is most robust (best range and noise immunity) but slowest. The reader picks based on the environment.</p>
+</div>
+<div class="rfid-box">
+<h3>Why it matters</h3>
+<ul>
+<li>Raw NRZ data (just high/low for 1/0) has no guaranteed transitions — long runs of 1s would have no edges, making clock recovery impossible</li>
+<li>FM0 guarantees ≥1 transition per bit period, so the receiver can track timing even with a drifty tag oscillator</li>
+<li>The preamble uses a specific FM0 violation to mark the start of a packet — the receiver looks for this unique pattern</li>
+<li>Spectral properties: FM0 has most energy near the BLF; Miller concentrates energy at the subcarrier frequency, away from the DC carrier — reducing self-interference</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Typical values</h3>
+<ul>
+<li><span class="rfid-hl">BLF (backscatter link frequency):</span> 40 kHz to 640 kHz, set by the reader's DR and Tari parameters</li>
+<li><span class="rfid-hl">Common BLF:</span> 250 kHz (data rate = 250 kbps with FM0)</li>
+<li><span class="rfid-hl">Bit period:</span> 1/BLF = 1.56 µs to 25 µs</li>
+<li><span class="rfid-hl">FM0 preamble:</span> 1,0,1,0,1,1 + v (violation: no boundary transition) — 6+ symbols</li>
+<li><span class="rfid-hl">Encoding latency:</span> essentially zero — combinational logic, one gate delay (~1 ns)</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>How it connects to the next stage</h3>
+<p>The encoder's single-bit output wire goes directly to the gate of the backscatter MOSFET. When the encoder output is high, the MOSFET turns on and shorts the antenna pads. When low, the MOSFET is off and the antenna sees the chip's normal impedance.</p>
+<p>The pattern of switching IS the data. The reader will look at the reflected wave's amplitude/phase changes and decode the FM0 pattern back into bits.</p>
+</div>
+<div class="rfid-box rfid-box--full">
+<h3>Signal flow</h3>
+<p><span class="rfid-sig">Input:</span> Serial data bits from the state machine (EPC bits, CRC, etc.) at the BLF clock rate.</p>
+<p><span class="rfid-sig">Output:</span> FM0-encoded square wave on a single wire → gate of the backscatter MOSFET. The waveform has transitions at every bit boundary, plus mid-bit transitions for '0' bits. This wire toggles at up to 2×BLF = 1.28 MHz (trivial for CMOS logic).</p>
+</div>
+</div>
+
+{% include how-rfid-works/chapter-foot.html %}

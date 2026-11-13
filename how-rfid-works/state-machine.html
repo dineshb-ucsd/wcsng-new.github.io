@@ -1,0 +1,38 @@
+---
+layout: page
+title: "Gen2 State Machine | How RFID Works"
+seo_title: "Gen2 State Machine | How RFID Works"
+seo_description: "~5000–15000 gates. Parses commands, manages anti-collision slots, orchestrates response."
+permalink: /how-rfid-works/state-machine/
+rfid_chapter: state-machine
+cover: /assets/gif/how-rfid-works/state-machine.png
+show_title: false
+---
+{% include how-rfid-works/chapter-head.html %}
+
+<div class="rfid-info">
+<div class="rfid-box">
+<h3>What it is physically</h3>
+<p>Synthesized digital logic — a <span class="rfid-hl">finite state machine</span> implementing the full EPC Gen2 (ISO 18000-63) air interface protocol. About 5,000–15,000 logic gates total, running off the ring oscillator clock at ~1.5 MHz. Includes a CRC-16 generator/checker and a command decoder.</p>
+</div>
+<div class="rfid-box">
+<h3>What it does</h3>
+<p>Parses incoming commands from the envelope detector, manages the tag's state transitions, reads the EPC from memory, and orchestrates the backscatter response. The typical inventory round: <span class="rfid-hl">Query → pick slot → wait → send RN16 → receive ACK → send EPC+CRC</span>.</p>
+</div>
+<div class="rfid-box">
+<h3>Why it matters</h3>
+<ul>
+<li>Implements anti-collision: multiple tags in the field take turns talking (slotted ALOHA)</li>
+<li>CRC-16 on every packet ensures data integrity</li>
+<li>Must handle power loss gracefully — if VDD drops mid-transaction, it resets cleanly</li>
+<li>Access control: kill password, access password for locking memory regions</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Signal at this point</h3>
+<p><span class="rfid-sig">Input:</span> Decoded command bits from envelope detector.</p>
+<p><span class="rfid-sig">Output:</span> Response bits (preamble + EPC + CRC-16) sent to the FM0 line encoder.</p>
+</div>
+</div>
+
+{% include how-rfid-works/chapter-foot.html %}

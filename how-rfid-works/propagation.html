@@ -1,0 +1,41 @@
+---
+layout: page
+title: "Free-Space Propagation | How RFID Works"
+seo_title: "Free-Space Propagation | How RFID Works"
+seo_description: "CW travels at speed of light. Power falls as 1/d². At 1m: about −8.7 dBm."
+permalink: /how-rfid-works/propagation/
+rfid_chapter: propagation
+cover: /assets/gif/how-rfid-works/propagation.png
+show_title: false
+---
+{% include how-rfid-works/chapter-head.html %}
+
+<div class="rfid-info">
+<div class="rfid-box">
+<h3>What happens physically</h3>
+<p>The electromagnetic wave expands as a sphere. The same total power is spread over an area that grows as <span class="rfid-hl">4πd²</span>. The tag's antenna captures only a tiny fraction of this sphere. At 915 MHz, the <span class="rfid-hl">free-space path loss at 1m is 31.7 dB</span> — the tag receives about 1/1500th of the transmitted power.</p>
+</div>
+<div class="rfid-box">
+<h3>The Friis equation</h3>
+<p><span class="rfid-hl">P_rx = P_tx × G_tx × G_rx × (λ/4πd)²</span></p>
+<p>At 915 MHz, λ = 32.7 cm. With EIRP = +36 dBm and tag antenna gain ≈ −10 dBi (on skin):</p>
+<p>At 0.5m: −2.6 dBm | At 1.0m: −8.7 dBm | At 1.5m: −12.2 dBm | At 2.0m: −14.7 dBm</p>
+<p>The Monza R6 wakes up at <span class="rfid-hl">−20 dBm</span>, so range ≈ 3–4m in free space, ~1.3m on skin.</p>
+</div>
+<div class="rfid-box">
+<h3>Why it matters</h3>
+<ul>
+<li>Path loss is the fundamental limit on read range.</li>
+<li>Backscatter is WORSE: the signal must travel the path TWICE (reader→tag→reader), so round-trip loss ∝ 1/d⁴.</li>
+<li>On skin, the body absorbs ~10 dB, cutting effective range roughly in half.</li>
+<li>Multipath (reflections from walls, floor) adds constructive and destructive fading — ±10 dB is common.</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Signal at this point</h3>
+<p><span class="rfid-sig">At reader:</span> +36 dBm EIRP (4 Watts radiated).</p>
+<p><span class="rfid-sig">At tag (1m):</span> ≈ −8.7 dBm (0.13 mW). The 915 MHz carrier arrives with the same frequency, just much weaker. The tag's antenna couples ~±200 mV from this.</p>
+</div>
+</div>
+
+{% include how-rfid-works/chapter-foot.html %}

@@ -1,0 +1,38 @@
+---
+layout: page
+title: "EEPROM / NVM Memory | How RFID Works"
+seo_title: "EEPROM / NVM Memory | How RFID Works"
+seo_description: "96-bit EPC (writeable), 48-bit TID (factory-fused), user memory. This IS the tag's identity."
+permalink: /how-rfid-works/memory/
+rfid_chapter: memory
+cover: /assets/gif/how-rfid-works/memory.png
+show_title: false
+---
+{% include how-rfid-works/chapter-head.html %}
+
+<div class="rfid-info">
+<div class="rfid-box">
+<h3>What it is physically</h3>
+<p>A small block of <span class="rfid-hl">EEPROM</span> (Electrically Erasable Programmable Read-Only Memory) — floating-gate transistors that retain their charge without power. The Monza R6 has: 96-bit EPC, 48-bit TID, 32-bit user memory, and 64-bit reserved (passwords). Total: ~240 bits, maybe 0.01 mm² of die area.</p>
+</div>
+<div class="rfid-box">
+<h3>What it does</h3>
+<p>Stores the tag's identity and responds to read requests from the state machine. The <span class="rfid-hl">EPC bank</span> is the main identifier — field-writeable by the reader (via the Gen2 Write command). The <span class="rfid-hl">TID bank</span> is factory-fused at the Impinj fab — a unique serial number burned into the silicon, impossible to change.</p>
+</div>
+<div class="rfid-box">
+<h3>Why it matters</h3>
+<ul>
+<li>The EPC is what the reader receives during inventory — it IS the tag's identity to the outside world</li>
+<li>Reading is fast (a few clock cycles) and costs almost no energy</li>
+<li>Writing requires higher voltage (~15V internally, from an on-chip charge pump boost) and takes ~5 ms per word</li>
+<li>Endurance: ~100,000 write cycles — plenty for supply chain (written once)</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Signal at this point</h3>
+<p><span class="rfid-sig">Input:</span> Read address from state machine (which bank, which word).</p>
+<p><span class="rfid-sig">Output:</span> The stored bits — most often the 96-bit EPC: E200 3412 7856 0000 0000 0001.</p>
+</div>
+</div>
+
+{% include how-rfid-works/chapter-foot.html %}

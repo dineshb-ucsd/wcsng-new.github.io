@@ -1,0 +1,70 @@
+---
+layout: page
+title: "How RFID Works | Component by Component"
+seo_title: "How RFID Works: UHF RFID, Component by Component"
+seo_description: "An animated walkthrough of a passive UHF RFID system, from the reader's oscillator through tag power harvesting, the Gen2 protocol and backscatter, to phase extraction and bit recovery at the reader."
+permalink: /how-rfid-works/
+cover: /assets/gif/how-rfid-works/backscatter-mosfet.png
+show_title: false
+---
+{%- include how-rfid-works/style.html -%}
+{%- assign _rfid_chs = site.data.how_rfid_works.chapters -%}
+{%- assign _rfid_media = '/assets/gif/how-rfid-works/' | relative_url -%}
+<div class="rfid">
+  <p class="rfid-eyebrow"><span class="rfid-pill rfid-pill--reader">Explainer</span> WCSNG &middot; Backscatter &amp; RFID sensing</p>
+  <h1 class="rfid-title">How RFID Works, Component by Component</h1>
+  <p class="rfid-lede">
+    A passive UHF RFID tag has no battery and no radio transmitter. Instead, it reflects energy back to the reader.
+    The reader sends out a continuous 915&nbsp;MHz wave. The tag harvests enough of that wave to power a tiny chip.
+    It answers by switching its antenna between two impedances, so the reflection carries its ID back to the reader.
+    These {{ _rfid_chs.size }} short chapters follow the signal through every block of that loop, each with an animated diagram.
+  </p>
+
+  <figure class="rfid-fig">
+    <picture>
+      <source media="(prefers-reduced-motion: reduce)" srcset="{{ _rfid_media }}backscatter-mosfet.png">
+      <img src="{{ _rfid_media }}backscatter-mosfet.gif" alt="Animated diagram of backscatter: a single transistor toggles the tag antenna's impedance, switching the strength of the reflected wave">
+    </picture>
+    <figcaption>The core trick: one transistor across the antenna pads toggles how strongly the tag reflects the reader's carrier (chapter 18).</figcaption>
+  </figure>
+
+  <div class="rfid-chain" aria-label="Signal path">
+    {%- assign _last = '' -%}
+    {%- for ch in _rfid_chs -%}
+      {%- if ch.section != _last -%}
+        {%- unless forloop.first -%}<span class="rfid-arrow">&rarr;</span>{%- endunless -%}
+        <a href="#{{ ch.section }}"><span class="rfid-pill rfid-pill--{{ ch.role }}">{{ ch.section_label }}</span></a>
+        {%- assign _last = ch.section -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  {%- assign _last = '' -%}
+  {%- for ch in _rfid_chs -%}
+    {%- if ch.section != _last -%}
+      {%- unless forloop.first -%}</div>{%- endunless -%}
+      <h2 class="rfid-section rfid-section--{{ ch.role }}" id="{{ ch.section }}">{{ ch.section_label }}</h2>
+      <div class="rfid-grid">
+      {%- assign _last = ch.section -%}
+    {%- endif -%}
+    <a class="rfid-card" href="{{ '/how-rfid-works/' | append: ch.slug | append: '/' | relative_url }}">
+      <img src="{{ _rfid_media }}{{ ch.slug }}-thumb.jpg" alt="" loading="lazy" width="480" height="200">
+      <div class="rfid-card-body">
+        <div class="rfid-card-num">{{ ch.num }}</div>
+        <h3>{{ ch.title }}</h3>
+        <p>{{ ch.blurb }}</p>
+      </div>
+    </a>
+    {%- if forloop.last -%}</div>{%- endif -%}
+  {%- endfor -%}
+
+  <h2 class="rfid-section" id="research">RFID research at WCSNG</h2>
+  <p>These projects build on the backscatter link explained above to turn ordinary RFID tags into battery-free sensors:</p>
+  <div class="rfid-projects">
+    <a href="{{ '/zensetag/' | relative_url }}"><strong>ZenseTag</strong><span>Twin-tag, single-antenna interface for COTS sensors (SenSys&nbsp;'24)</span></a>
+    <a href="{{ '/tunetag/' | relative_url }}"><strong>TuneTag</strong><span>Impedance-matched tag for long-range, reliable sensing (IEEE JRFID)</span></a>
+    <a href="{{ '/sensync/' | relative_url }}"><strong>SenSync</strong><span>Real-time, accurate passive sensing (IEEE RFID&nbsp;2025)</span></a>
+    <a href="{{ '/sigar_demo/' | relative_url }}"><strong>SIGAR</strong><span>Sensor integration gateway using augmented reality (SenSys&nbsp;'25 demo)</span></a>
+    <a href="{{ '/agrisense/' | relative_url }}"><strong>AgriSense</strong><span>Battery-free soil sensing for connected agriculture</span></a>
+  </div>
+</div>

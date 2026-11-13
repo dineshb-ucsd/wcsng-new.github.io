@@ -1,0 +1,76 @@
+---
+layout: page
+title: "Backscatter Modulator (THE MOSFET) | How RFID Works"
+seo_title: "Backscatter Modulator (THE MOSFET) | How RFID Works"
+seo_description: "One transistor across the antenna pads. Toggles impedance → toggles reflection. This is how data rides the wave."
+permalink: /how-rfid-works/backscatter-mosfet/
+rfid_chapter: backscatter-mosfet
+cover: /assets/gif/how-rfid-works/backscatter-mosfet.png
+show_title: false
+---
+{% include how-rfid-works/chapter-head.html %}
+
+<div class="rfid-info">
+<div class="rfid-box rfid-box--full rfid-box--key">
+<h3>⚡ This is the most important component in the entire system</h3>
+<p>The backscatter modulator is <span class="rfid-hl">a single NMOS transistor</span> (maybe W=50 µm, L=minimum) connected across the tag's antenna pads (RF+ to RF−). That's it. One transistor. Its gate is driven by the FM0 encoder output. When the gate goes high, the MOSFET turns on and effectively short-circuits the antenna terminals. When the gate goes low, the antenna sees the chip's normal input impedance.</p>
+<p>The reader's CW signal bounces off the antenna. The <span class="rfid-hl">reflection coefficient changes</span> depending on whether the MOSFET is on or off. The reader sees this changing reflection as a modulated signal — and the pattern of ON/OFF switching, set by the FM0 encoder, carries the tag's EPC data.</p>
+<p><span class="rfid-warn">The tag NEVER generates or transmits any RF signal.</span> It only reflects the reader's own signal with two different impedances. The data rides on the difference between these two reflections.</p>
+</div>
+<div class="rfid-box">
+<h3>MOSFET ON state (gate high)</h3>
+<ul>
+<li><span class="rfid-hl">Drain-source resistance:</span> ~5–10 Ω (essentially a short)</li>
+<li><span class="rfid-hl">Antenna impedance seen:</span> Z₂ ≈ 0 + j0 Ω (short circuit)</li>
+<li><span class="rfid-hl">Reflection coefficient:</span> Γ₂ ≈ −1 (total reflection, phase-inverted)</li>
+<li>All incoming power is reflected back — maximum reflected amplitude</li>
+<li>The reflected wave is 180° phase-shifted from the incident wave</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>MOSFET OFF state (gate low)</h3>
+<ul>
+<li><span class="rfid-hl">Drain-source resistance:</span> &gt; 1 MΩ (open circuit)</li>
+<li><span class="rfid-hl">Antenna impedance seen:</span> Z₁ = chip's input impedance (charge pump + shunt)</li>
+<li>For Monza R6: Z₁ ≈ 1.56 kΩ ∥ 1.25 pF (complex impedance)</li>
+<li><span class="rfid-hl">Reflection coefficient:</span> Γ₁ — partial reflection, different phase than Γ₂</li>
+<li>Some power is absorbed (harvested), the rest reflected at a different phase/amplitude</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>What the reader sees</h3>
+<p>The reflected signal toggles between Γ₁ and Γ₂ at the FM0 data rate (40–640 kHz). The reader's IQ mixer sees this as a baseband square wave:</p>
+<ul>
+<li><span class="rfid-hl">Modulated return</span> = ΔΓ = Γ₂ − Γ₁ — this carries the data</li>
+<li><span class="rfid-hl">Structural return</span> = (Γ₁ + Γ₂)/2 — the DC component, carries phase info</li>
+<li>The modulated return is what the bit detector locks onto</li>
+<li>The structural return's phase is what phase-based RFID sensing measures — anything that changes the tag's load impedance shifts it</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Sensing through Γ₁</h3>
+<p>When a sensor whose impedance depends on the quantity being measured (for example a capacitive or resistive sensor) loads the tag's antenna port, it changes <span class="rfid-hl">Z₁ — the "OFF" impedance</span>.</p>
+<ul>
+<li>Stimulus changes → sensor impedance changes → Z₁ changes → Γ₁ changes → <span class="rfid-hl">phase of the structural return shifts</span></li>
+<li>The Γ₂ state (short) is largely unaffected — the MOSFET dominates when ON</li>
+<li>A second, identical tag IC without the sensor serves as a reference, so the differential phase Δφ isolates the sensor signal</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Modulation depth and link budget</h3>
+<ul>
+<li><span class="rfid-hl">Modulation efficiency:</span> |ΔΓ|²/4 determines how much of the incident power becomes modulated backscatter. Typical: −10 to −20 dB relative to incident power.</li>
+<li><span class="rfid-hl">Radar cross section:</span> The tag's effective antenna area for backscatter, σ = G²λ²|ΔΓ|²/(4π). Typical: ~0.01 m² for a UHF tag.</li>
+<li><span class="rfid-hl">Round-trip loss:</span> Reader → tag → reader follows 1/d⁴ (fourth power!) because the signal traverses the path twice. This is why RFID range is limited to a few meters.</li>
+<li><span class="rfid-hl">Switching speed requirement:</span> BLF up to 640 kHz — trivially fast for even the smallest MOSFET. The transistor's fT is in the GHz range.</li>
+</ul>
+</div>
+<div class="rfid-box rfid-box--full">
+<h3>Signal flow</h3>
+<p><span class="rfid-sig">Input (gate):</span> FM0-encoded digital signal from the line encoder. A square wave at the BLF rate, encoding EPC bits.</p>
+<p><span class="rfid-sig">Input (drain/source):</span> 915 MHz CW from the reader, arriving via the tag antenna. Amplitude: ±200 mV at the chip pads (at threshold distance).</p>
+<p><span class="rfid-sig">Output:</span> The reflected wave leaving the tag antenna back toward the reader. Its amplitude and phase toggle between two states (Γ₁ and Γ₂) at the FM0 rate. The reader's IQ mixer extracts this modulation as a baseband signal. The EPC is encoded in the switching pattern; the phase reflects the tag's load impedance, which is what RFID sensors exploit.</p>
+</div>
+</div>
+
+{% include how-rfid-works/chapter-foot.html %}

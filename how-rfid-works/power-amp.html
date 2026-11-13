@@ -1,0 +1,38 @@
+---
+layout: page
+title: "Power Amplifier | How RFID Works"
+seo_title: "Power Amplifier | How RFID Works"
+seo_description: "Boosts the 915 MHz carrier from milliwatts to 1 Watt (+30 dBm)."
+permalink: /how-rfid-works/power-amp/
+rfid_chapter: power-amp
+cover: /assets/gif/how-rfid-works/power-amp.png
+show_title: false
+---
+{% include how-rfid-works/chapter-head.html %}
+
+<div class="rfid-info">
+<div class="rfid-box">
+<h3>What it is physically</h3>
+<p>A GaAs or GaN FET amplifier IC on the reader board, plus an <span class="rfid-hl">output matching network</span> (a few inductors and capacitors). Often a multi-stage design: a pre-amp drives the final power stage. Runs warm — may have a small heatsink.</p>
+</div>
+<div class="rfid-box">
+<h3>What it does</h3>
+<p>The PLL output is ~0 dBm (1 mW). The PA boosts it to <span class="rfid-hl">+30 dBm (1 Watt)</span> — a gain of 30 dB (×1000 in power). The RF signal controls when the FET conducts; the actual energy comes from the DC supply. The matching network transforms the FET's output impedance to 50 Ω.</p>
+</div>
+<div class="rfid-box">
+<h3>Why it matters</h3>
+<ul>
+<li>The tag needs at least −20 dBm to wake up. At 1m with path loss, the reader must start at +30 dBm or higher.</li>
+<li>PA efficiency determines heat dissipation and battery life (for handheld readers).</li>
+<li>PA linearity matters for ASK modulation — the amplitude dips must be clean, not distorted.</li>
+<li>FCC limits: max +30 dBm conducted, or +36 dBm EIRP with antenna gain.</li>
+</ul>
+</div>
+<div class="rfid-box">
+<h3>Signal at this point</h3>
+<p><span class="rfid-sig">Input:</span> 915 MHz sine, ~0 dBm (1 mW, ~630 mV peak into 50 Ω).</p>
+<p><span class="rfid-sig">Output:</span> 915 MHz sine, +30 dBm (1 W, ~10 V peak into 50 Ω). Same frequency, 1000× more power.</p>
+</div>
+</div>
+
+{% include how-rfid-works/chapter-foot.html %}
